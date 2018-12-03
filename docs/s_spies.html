@@ -1,0 +1,102 @@
+<!doctype HTML>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="codemirror.js"></script>
+<script src="runmode.js"></script>
+<script src="pyret.js"></script>
+<script src="hilite.js"></script>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>2.7&nbsp;Spies</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-fonts.css" title="default"/><link rel="stylesheet" type="text/css" href="codemirror.css" title="default"/><link rel="stylesheet" type="text/css" href="pyret.css" title="default"/><link rel="stylesheet" type="text/css" href="styles.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9658;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Pyret</a></td></tr></table></div><div class="tocviewsublisttop" style="display: none;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right">1&nbsp;</td><td><a href="Getting_Started.html" class="tocviewlink" data-pltdoc="x">Getting Started</a></td></tr><tr><td align="right">2&nbsp;</td><td><a href="Language_Concepts.html" class="tocviewselflink" data-pltdoc="x">Language Concepts</a></td></tr><tr><td align="right">3&nbsp;</td><td><a href="Builtins_and_Libraries.html" class="tocviewlink" data-pltdoc="x">Builtins and Libraries</a></td></tr><tr><td align="right">4&nbsp;</td><td><a href="Pyret_Style_Guide.html" class="tocviewlink" data-pltdoc="x">Pyret Style Guide</a></td></tr><tr><td align="right">5&nbsp;</td><td><a href="Internals.html" class="tocviewlink" data-pltdoc="x">Internals</a></td></tr><tr><td align="right">6&nbsp;</td><td><a href="Glossary.html" class="tocviewlink" data-pltdoc="x">Glossary</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_1&quot;);">&#9660;</a></td><td>2&nbsp;</td><td><a href="Language_Concepts.html" class="tocviewlink" data-pltdoc="x">Language Concepts</a></td></tr></table><div class="tocviewsublist" style="display: block;" id="tocview_1"><table cellspacing="0" cellpadding="0"><tr><td align="right">2.1&nbsp;</td><td><a href="s_forms.html" class="tocviewlink" data-pltdoc="x">Language Constructs</a></td></tr><tr><td align="right">2.2&nbsp;</td><td><a href="testing.html" class="tocviewlink" data-pltdoc="x">Testing</a></td></tr><tr><td align="right">2.3&nbsp;</td><td><a href="equality.html" class="tocviewlink" data-pltdoc="x">equality</a></td></tr><tr><td align="right">2.4&nbsp;</td><td><a href="op-precedence.html" class="tocviewlink" data-pltdoc="x">Operator Precedence</a></td></tr><tr><td align="right">2.5&nbsp;</td><td><a href="brands.html" class="tocviewlink" data-pltdoc="x">Brands</a></td></tr><tr><td align="right">2.6&nbsp;</td><td><a href="type-check.html" class="tocviewlink" data-pltdoc="x">Type Checking</a></td></tr><tr><td align="right">2.7&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Spies</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_2&quot;);">&#9658;</a></td><td>2.7&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Spies</a></td></tr></table><div class="tocviewsublistbottom" style="display: none;" id="tocview_2"><table cellspacing="0" cellpadding="0"><tr><td align="right">2.7.1&nbsp;</td><td><a href="#%28part._.Examples%29" class="tocviewlink" data-pltdoc="x">Examples</a></td></tr><tr><td align="right">2.7.2&nbsp;</td><td><a href="#%28part._.Minor_.Notes_and_.Corner_.Cases%29" class="tocviewlink" data-pltdoc="x">Minor Notes and Corner Cases</a></td></tr><tr><td align="right">2.7.3&nbsp;</td><td><a href="#%28part._.Grammar%29" class="tocviewlink" data-pltdoc="x">Grammar</a></td></tr><tr><td align="right">2.7.4&nbsp;</td><td><a href="#%28part._s~3aspies~3arationale%29" class="tocviewlink" data-pltdoc="x">Rationale</a></td></tr></table></div></div></div><div class="tocsub"><div class="tocsubtitle">On this page:</div><table class="tocsublist" cellspacing="0"><tr><td><span class="tocsublinknumber">2.7.1<tt>&nbsp;</tt></span><a href="#%28part._.Examples%29" class="tocsubseclink" data-pltdoc="x">Examples</a></td></tr><tr><td><span class="tocsublinknumber">2.7.2<tt>&nbsp;</tt></span><a href="#%28part._.Minor_.Notes_and_.Corner_.Cases%29" class="tocsubseclink" data-pltdoc="x">Minor Notes and Corner Cases</a></td></tr><tr><td><span class="tocsublinknumber">2.7.3<tt>&nbsp;</tt></span><a href="#%28part._.Grammar%29" class="tocsubseclink" data-pltdoc="x">Grammar</a></td></tr><tr><td><span class="tocsublinknumber">2.7.4<tt>&nbsp;</tt></span><a href="#%28part._s~3aspies~3arationale%29" class="tocsubseclink" data-pltdoc="x">Rationale</a></td></tr></table></div></div><div class="maincolumn"><div class="main"><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="type-check.html" title="backward to &quot;2.6 Type Checking&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="Language_Concepts.html" title="up to &quot;2 Language Concepts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Builtins_and_Libraries.html" title="forward to &quot;3 Builtins and Libraries&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h4>2.7<tt>&nbsp;</tt><a name="(part._s~3aspies)"></a>Spies</h4><p>Spies are used for convenient display of values for print-style debugging. See
+<a href="#%28part._s~3aspies~3arationale%29" data-pltdoc="x">Rationale</a> for why this is particularly useful in Pyret.</p><h5>2.7.1<tt>&nbsp;</tt><a name="(part._.Examples)"></a>Examples</h5><p>The shortest use of a <span class="stt">spy</span> statement is to print the value of a name:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>x = 10
+spy: x end</p></pre></pre><p>This will produce a message like:</p><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>The filename will be the name of the file containing the <span class="stt">spy</span>
+statement, not <span class="stt">spies.arr</span> as shown here</p></blockquote></blockquote></blockquote></div><div class="SIntrapara"><table cellspacing="0" cellpadding="0"><tr><td><p><span class="stt">Spying (at file:///spies.arr:2:0-2:10)</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">x: 10</span></p></td></tr></table></div></p><p>On code.pyret.org, you&rsquo;ll see output like:</p><p><img src="simple-spy.png" alt="" width="481" height="59"/></p><p>Both of these outputs indicate that the name was <span class="stt">x</span> and the value was
+<span class="stt">10</span>. In the text output, the line and column information is printed (this
+happened at line 2). In the visual output, the <span class="stt">x</span> is underlined &#8211; clicking
+it will scroll the editor to the line of the spy statement and highlight the
+corresponding use of <span class="stt">x</span>.</p><p>A <span class="stt">spy</span> statement can contain more than one name, and will print out all their
+values:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>x = 10
+y = [list: 1, 2, 3]
+spy: x, y end</p></pre></pre><p><table cellspacing="0" cellpadding="0"><tr><td><p><span class="stt">Spying (at file:///spies.arr:3:0-3:13)</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">x: 10</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">y: [list: 1, 2, 3]</span></p></td></tr></table></p><p>A spy statement can also contain a message. This can be helpful for
+distinguishing between spy statements without looking at their corresponding
+line numbers:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>fun square(x):
+  spy "in square": x end
+  x * x
+end
+
+fun cube(x):
+  spy "in cube": x end
+  x * x * x
+end
+
+square(x)
+cube(x)
+square(x)</p></pre></pre><p>Will produce:</p><p><table cellspacing="0" cellpadding="0"><tr><td><p><span class="stt">Spying "in square" (at file:///spies.arr:2:2-2:24)</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">x: 3</span></p></td></tr><tr><td><p><span class="stt">Spying "in cube" (at file:///spies.arr:7:2-7:22)</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">x: 2</span></p></td></tr><tr><td><p><span class="stt">Spying "in square" (at file:///spies.arr:2:2-2:24)</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">x: 2</span></p></td></tr></table></p><p>If we want to <span class="stt">spy</span> on an expression, rather than just names, we can give
+the expression a name within the <span class="stt">spy</span> statement:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>fun reverse(lst, sofar):
+  spy "lengths":
+    lst-length: lst.length(),
+    sofar-length: sofar.length(),
+    sum: lst.length() + sofar.length()
+  end
+  cases(List&lt;A&gt;) lst:
+    | empty =&gt; sofar
+    | link(first, rest) =&gt;
+      reverse(rest, link(first, sofar))
+  end
+end
+
+check:
+  reverse([list: "a", "b", "c"], empty) is [list: "c", "b", "a"]
+end
+</p></pre></pre><p>This produces:</p><p><table cellspacing="0" cellpadding="0"><tr><td><p><span class="stt">Spying "lengths" (at file:///spies.arr:2:2-6:5)</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">lst-length: 3</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">sofar-length: 0</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">sum: 3</span></p></td></tr><tr><td><p><span class="stt">Spying "lengths" (at file://spies.arr:2:2-6:5)</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">lst-length: 2</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">sofar-length: 1</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">sum: 3</span></p></td></tr><tr><td><p><span class="stt">Spying "lengths" (at file:///spies.arr:2:2-6:5)</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">lst-length: 1</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">sofar-length: 2</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">sum: 3</span></p></td></tr><tr><td><p><span class="stt">Spying "lengths" (at file:///spies.arr:2:2-6:5)</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">lst-length: 0</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">sofar-length: 3</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">sum: 3</span></p></td></tr></table></p><h5>2.7.2<tt>&nbsp;</tt><a name="(part._.Minor_.Notes_and_.Corner_.Cases)"></a>Minor Notes and Corner Cases</h5><p>Both types of spy fields can be used in a single spy statement:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>x = 10
+spy:
+  x,
+  y: 20
+end</p></pre></pre><p>Each value that is spied upon is required to have a name. That is, it&rsquo;s an
+error to write:</p><pre class="pyret-block"><pre class="pyret-highlight bad-ex"><p>spy:
+  2 + 2
+end</p></pre></pre><p>The message position can contain expressions, not just string constants, so the
+message can be computed:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>fun f(n):
+  n * n
+end
+for each(i from range(0, 10)):
+  result = f(i)
+  spy "iteration " + to-string(i):
+    result
+  end
+  result
+end</p></pre></pre><h5>2.7.3<tt>&nbsp;</tt><a name="(part._.Grammar)"></a>Grammar</h5><p>The grammar of <span class="stt">spy</span> statements is:</p><blockquote class="SCodeFlow" style="white-space: pre;"><p><a name="(elem._(bnf-prod._(.Pyret._spy-stmt)))"></a><span class="bnf-rule">&#8249;spy-stmt&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit">spy</span> <span class="bnf-meta">[</span><a href="Expressions.html#%28elem._%28bnf-prod._%28.Pyret._expr%29%29%29" data-pltdoc="x">&#8249;expr&#8250;</a><span class="bnf-meta">]</span> <span class="bnf-lit">:</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._spy-body%29%29%29" data-pltdoc="x">&#8249;spy-body&#8250;</a> <span class="bnf-lit">end</span>
+<a name="(elem._(bnf-prod._(.Pyret._spy-body)))"></a><span class="bnf-rule">&#8249;spy-body&#8250;</span><span class="bnf-meta">:</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._spy-field%29%29%29" data-pltdoc="x">&#8249;spy-field&#8250;</a> <span class="bnf-meta">(</span><span class="bnf-meta">[</span><span class="bnf-lit">,</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._spy-field%29%29%29" data-pltdoc="x">&#8249;spy-field&#8250;</a><span class="bnf-meta">]</span><span class="bnf-meta">)</span><span class="bnf-meta">*</span>
+<a name="(elem._(bnf-prod._(.Pyret._spy-field)))"></a><span class="bnf-rule">&#8249;spy-field&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit bnf-unknown">NAME</span><span class="bnf-meta"> | </span><span class="bnf-lit bnf-unknown">NAME</span> <span class="bnf-lit">:</span> <a href="Expressions.html#%28elem._%28bnf-prod._%28.Pyret._binop-expr%29%29%29" data-pltdoc="x">&#8249;binop-expr&#8250;</a></p></blockquote><h5>2.7.4<tt>&nbsp;</tt><a name="(part._s~3aspies~3arationale)"></a>Rationale</h5><p>Often, when debugging or explaining a program, it&rsquo;s useful to display values
+during execution. It&rsquo;s common to do this with functions like <a href="_global_.html#%28part._~3cglobal~3e_print%29" data-pltdoc="x"><span class="stt">print</span></a>. However, both in general, and specifically in Pyret, using a
+regular function call for debug printing leaves something to be desired. For
+example, just printing doesn&rsquo;t track the line and column something was printed
+at, and when the value of an identifier is printed, its name is lost in the
+output, forcing the programmer to add extra string output describing the value.
+More annoyingly in Pyret, since we often add print statements to
+already-existing code, it becomes a nuisance to add <a href="Blocks.html#%28part._s~3ablocky-blocks%29" data-pltdoc="x">Block Shorthand</a>
+just to get a debugging print.</p><p>For example, consider the <span class="stt">reverse</span> example from above:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>fun reverse(lst, sofar):
+  cases(List&lt;A&gt;) lst:
+    | empty =&gt; sofar
+    | link(first, rest) =&gt;
+      reverse(rest, link(first, sofar))
+  end
+end</p></pre></pre><p>We might try to add uses of <a href="_global_.html#%28part._~3cglobal~3e_print%29" data-pltdoc="x"><span class="stt">print</span></a> to do what the spy
+statement did:</p><pre class="pyret-block"><pre class="pyret-highlight bad-ex"><p>fun reverse(lst, sofar):
+  print(lst.length())
+  print(sofar.length())
+  print(lst.length() + sofar.length())
+  cases(List&lt;A&gt;) lst:
+    | empty =&gt; sofar
+    | link(first, rest) =&gt;
+      reverse(rest, link(first, sofar))
+  end
+end</p></pre></pre><p>This has a few problems. First, because Pyret restricts function bodies to have
+no more than one expression unless <a href="Blocks.html#%28part._s~3ablocky-blocks%29" data-pltdoc="x">Block Shorthand</a> is used, this is
+an immediate syntax error. We could change the first line to include
+<span class="stt">block:</span> to let Pyret know we want to allow multiple statements.</p><pre class="pyret-block"><pre class="pyret-highlight"><p>fun reverse(lst, sofar) block:</p></pre></pre><p>Second, the uses of <a href="_global_.html#%28part._~3cglobal~3e_print%29" data-pltdoc="x"><span class="stt">print</span></a> lack context. With this
+version, we&rsquo;d simply see sequences of numbers print out, and it would be
+difficult to discern which came from which print statement, or what the values
+meant. We could add more string information into the output to label the
+outputs, which leads to clunky string concatenation expressions like</p><pre class="pyret-block"><pre class="pyret-highlight"><p>print("lst-length: " + to-string(lst.length()))</p></pre></pre><p>This ends up being onerous and error prone.</p><p>Finally, for rich values like tables and images, the string representation
+produced by <a href="_global_.html#%28part._~3cglobal~3e_print%29" data-pltdoc="x"><span class="stt">print</span></a> isn&rsquo;t as useful as the rich rendering
+that Pyret provides in an interface like code.pyret.org.</p><p>The <span class="stt">spy</span> statement is designed to make it natural and useful to add printed
+observations to the program, supporting and enhancing the practice of
+&#8220;printf-debugging&#8221;.</p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="type-check.html" title="backward to &quot;2.6 Type Checking&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="Language_Concepts.html" title="up to &quot;2 Language Concepts&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="Builtins_and_Libraries.html" title="forward to &quot;3 Builtins and Libraries&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>

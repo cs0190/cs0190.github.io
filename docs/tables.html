@@ -1,0 +1,533 @@
+<!doctype HTML>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="codemirror.js"></script>
+<script src="runmode.js"></script>
+<script src="pyret.js"></script>
+<script src="hilite.js"></script>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>3.6&nbsp;Tables</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-fonts.css" title="default"/><link rel="stylesheet" type="text/css" href="codemirror.css" title="default"/><link rel="stylesheet" type="text/css" href="pyret.css" title="default"/><link rel="stylesheet" type="text/css" href="styles.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9658;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Pyret</a></td></tr></table></div><div class="tocviewsublisttop" style="display: none;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right">1&nbsp;</td><td><a href="Getting_Started.html" class="tocviewlink" data-pltdoc="x">Getting Started</a></td></tr><tr><td align="right">2&nbsp;</td><td><a href="Language_Concepts.html" class="tocviewlink" data-pltdoc="x">Language Concepts</a></td></tr><tr><td align="right">3&nbsp;</td><td><a href="Builtins_and_Libraries.html" class="tocviewselflink" data-pltdoc="x">Builtins and Libraries</a></td></tr><tr><td align="right">4&nbsp;</td><td><a href="Pyret_Style_Guide.html" class="tocviewlink" data-pltdoc="x">Pyret Style Guide</a></td></tr><tr><td align="right">5&nbsp;</td><td><a href="Internals.html" class="tocviewlink" data-pltdoc="x">Internals</a></td></tr><tr><td align="right">6&nbsp;</td><td><a href="Glossary.html" class="tocviewlink" data-pltdoc="x">Glossary</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_1&quot;);">&#9660;</a></td><td>3&nbsp;</td><td><a href="Builtins_and_Libraries.html" class="tocviewlink" data-pltdoc="x">Builtins and Libraries</a></td></tr></table><div class="tocviewsublist" style="display: block;" id="tocview_1"><table cellspacing="0" cellpadding="0"><tr><td align="right">3.1&nbsp;</td><td><a href="_global_.html" class="tocviewlink" data-pltdoc="x">Global Utilities</a></td></tr><tr><td align="right">3.2&nbsp;</td><td><a href="numbers.html" class="tocviewlink" data-pltdoc="x">Numbers</a></td></tr><tr><td align="right">3.3&nbsp;</td><td><a href="strings.html" class="tocviewlink" data-pltdoc="x">Strings</a></td></tr><tr><td align="right">3.4&nbsp;</td><td><a href="booleans.html" class="tocviewlink" data-pltdoc="x">Booleans</a></td></tr><tr><td align="right">3.5&nbsp;</td><td><a href="raw-arrays.html" class="tocviewlink" data-pltdoc="x">Raw<span class="mywbr"> &nbsp;</span>Array</a></td></tr><tr><td align="right">3.6&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Tables</a></td></tr><tr><td align="right">3.7&nbsp;</td><td><a href="lists.html" class="tocviewlink" data-pltdoc="x">lists</a></td></tr><tr><td align="right">3.8&nbsp;</td><td><a href="sets.html" class="tocviewlink" data-pltdoc="x">sets</a></td></tr><tr><td align="right">3.9&nbsp;</td><td><a href="arrays.html" class="tocviewlink" data-pltdoc="x">arrays</a></td></tr><tr><td align="right">3.10&nbsp;</td><td><a href="string-dict.html" class="tocviewlink" data-pltdoc="x">string-<wbr></wbr>dict</a></td></tr><tr><td align="right">3.11&nbsp;</td><td><a href="option.html" class="tocviewlink" data-pltdoc="x">option</a></td></tr><tr><td align="right">3.12&nbsp;</td><td><a href="pick.html" class="tocviewlink" data-pltdoc="x">pick</a></td></tr><tr><td align="right">3.13&nbsp;</td><td><a href="either.html" class="tocviewlink" data-pltdoc="x">either</a></td></tr><tr><td align="right">3.14&nbsp;</td><td><a href="srcloc.html" class="tocviewlink" data-pltdoc="x">srcloc</a></td></tr><tr><td align="right">3.15&nbsp;</td><td><a href="pprint.html" class="tocviewlink" data-pltdoc="x">pprint</a></td></tr><tr><td align="right">3.16&nbsp;</td><td><a href="s-exp.html" class="tocviewlink" data-pltdoc="x">s-<wbr></wbr>exp</a></td></tr><tr><td align="right">3.17&nbsp;</td><td><a href="s-exp-structs.html" class="tocviewlink" data-pltdoc="x">s-<wbr></wbr>exp-<wbr></wbr>structs</a></td></tr><tr><td align="right">3.18&nbsp;</td><td><a href="image-structs.html" class="tocviewlink" data-pltdoc="x">image-<wbr></wbr>structs</a></td></tr><tr><td align="right">3.19&nbsp;</td><td><a href="image.html" class="tocviewlink" data-pltdoc="x">image</a></td></tr><tr><td align="right">3.20&nbsp;</td><td><a href="world.html" class="tocviewlink" data-pltdoc="x">world</a></td></tr><tr><td align="right">3.21&nbsp;</td><td><a href="gdrive-sheets.html" class="tocviewlink" data-pltdoc="x">gdrive-<wbr></wbr>sheets</a></td></tr><tr><td align="right">3.22&nbsp;</td><td><a href="data-source.html" class="tocviewlink" data-pltdoc="x">data-<wbr></wbr>source</a></td></tr><tr><td align="right">3.23&nbsp;</td><td><a href="reactors.html" class="tocviewlink" data-pltdoc="x">reactors</a></td></tr><tr><td align="right">3.24&nbsp;</td><td><a href="chart.html" class="tocviewlink" data-pltdoc="x">chart</a></td></tr><tr><td align="right">3.25&nbsp;</td><td><a href="plot.html" class="tocviewlink" data-pltdoc="x">plot</a></td></tr><tr><td align="right">3.26&nbsp;</td><td><a href="statistics.html" class="tocviewlink" data-pltdoc="x">statistics</a></td></tr><tr><td align="right">3.27&nbsp;</td><td><a href="math.html" class="tocviewlink" data-pltdoc="x">math</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_2&quot;);">&#9658;</a></td><td>3.6&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Tables</a></td></tr></table><div class="tocviewsublistbottom" style="display: none;" id="tocview_2"><table cellspacing="0" cellpadding="0"><tr><td align="right">3.6.1&nbsp;</td><td><a href="#%28part._s~3atables%29" class="tocviewlink" data-pltdoc="x">Creating Tables</a></td></tr><tr><td align="right">3.6.2&nbsp;</td><td><a href="#%28part._s~3atables~3aloading%29" class="tocviewlink" data-pltdoc="x">Loading Tables</a></td></tr><tr><td align="right">3.6.3&nbsp;</td><td><a href="#%28part._s~3atables~3aselect%29" class="tocviewlink" data-pltdoc="x">Selecting Columns</a></td></tr><tr><td align="right">3.6.4&nbsp;</td><td><a href="#%28part._.Filtering_.Tables%29" class="tocviewlink" data-pltdoc="x">Filtering Tables</a></td></tr><tr><td align="right">3.6.5&nbsp;</td><td><a href="#%28part._.Ordering_.Tables%29" class="tocviewlink" data-pltdoc="x">Ordering Tables</a></td></tr><tr><td align="right">3.6.6&nbsp;</td><td><a href="#%28part._.Transforming_.Tables%29" class="tocviewlink" data-pltdoc="x">Transforming Tables</a></td></tr><tr><td align="right">3.6.7&nbsp;</td><td><a href="#%28part._.Extracting_.Columns_from_.Tables%29" class="tocviewlink" data-pltdoc="x">Extracting Columns from Tables</a></td></tr><tr><td align="right">3.6.8&nbsp;</td><td><a href="#%28part._.Extending_.Tables%29" class="tocviewlink" data-pltdoc="x">Extending Tables</a></td></tr><tr><td align="right">3.6.9&nbsp;</td><td><a href="#%28part._s~3atables~3acomparing%29" class="tocviewlink" data-pltdoc="x">Comparing Tables</a></td></tr><tr><td align="right">3.6.10&nbsp;</td><td><a href="#%28part._s~3atables~3amethods%29" class="tocviewlink" data-pltdoc="x">Advanced Table Manipulation</a></td></tr></table></div></div></div><div class="tocsub"><div class="tocsubtitle">On this page:</div><table class="tocsublist" cellspacing="0"><tr><td><span class="tocsublinknumber">3.6.1<tt>&nbsp;</tt></span><a href="#%28part._s~3atables%29" class="tocsubseclink" data-pltdoc="x">Creating Tables</a></td></tr><tr><td><span class="tocsublinknumber">3.6.2<tt>&nbsp;</tt></span><a href="#%28part._s~3atables~3aloading%29" class="tocsubseclink" data-pltdoc="x">Loading Tables</a></td></tr><tr><td><span class="tocsublinknumber">3.6.3<tt>&nbsp;</tt></span><a href="#%28part._s~3atables~3aselect%29" class="tocsubseclink" data-pltdoc="x">Selecting Columns</a></td></tr><tr><td><span class="tocsublinknumber">3.6.4<tt>&nbsp;</tt></span><a href="#%28part._.Filtering_.Tables%29" class="tocsubseclink" data-pltdoc="x">Filtering Tables</a></td></tr><tr><td><span class="tocsublinknumber">3.6.5<tt>&nbsp;</tt></span><a href="#%28part._.Ordering_.Tables%29" class="tocsubseclink" data-pltdoc="x">Ordering Tables</a></td></tr><tr><td><span class="tocsublinknumber">3.6.6<tt>&nbsp;</tt></span><a href="#%28part._.Transforming_.Tables%29" class="tocsubseclink" data-pltdoc="x">Transforming Tables</a></td></tr><tr><td><span class="tocsublinknumber">3.6.7<tt>&nbsp;</tt></span><a href="#%28part._.Extracting_.Columns_from_.Tables%29" class="tocsubseclink" data-pltdoc="x">Extracting Columns from Tables</a></td></tr><tr><td><span class="tocsublinknumber">3.6.8<tt>&nbsp;</tt></span><a href="#%28part._.Extending_.Tables%29" class="tocsubseclink" data-pltdoc="x">Extending Tables</a></td></tr><tr><td><span class="tocsublinknumber">3.6.8.1<tt>&nbsp;</tt></span><a href="#%28part._.Mapping_extensions%29" class="tocsubseclink" data-pltdoc="x">Mapping extensions</a></td></tr><tr><td><span class="tocsublinknumber">3.6.8.2<tt>&nbsp;</tt></span><a href="#%28part._.Reducers%29" class="tocsubseclink" data-pltdoc="x">Reducers</a></td></tr><tr><td><a href="#%28part._tables_running-sum%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">running-<wbr></wbr>sum</span></a></td></tr><tr><td><a href="#%28part._tables_difference%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">difference</span></a></td></tr><tr><td><a href="#%28part._tables_difference-from%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">difference-<wbr></wbr>from</span></a></td></tr><tr><td><a href="#%28part._tables_running-mean%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">running-<wbr></wbr>mean</span></a></td></tr><tr><td><a href="#%28part._tables_running-max%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">running-<wbr></wbr>max</span></a></td></tr><tr><td><a href="#%28part._tables_running-min%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">running-<wbr></wbr>min</span></a></td></tr><tr><td><a href="#%28part._tables_running-fold%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">running-<wbr></wbr>fold</span></a></td></tr><tr><td><a href="#%28part._tables_running-reduce%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">running-<wbr></wbr>reduce</span></a></td></tr><tr><td><a href="#%28part._tables_.Reducer%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">Reducer</span></a></td></tr><tr><td><a href="#%28part._tables_.Reducer_reducer_one%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.one</span></a></td></tr><tr><td><a href="#%28part._tables_.Reducer_reducer_reduce%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.reduce</span></a></td></tr><tr><td><span class="tocsublinknumber">3.6.9<tt>&nbsp;</tt></span><a href="#%28part._s~3atables~3acomparing%29" class="tocsubseclink" data-pltdoc="x">Comparing Tables</a></td></tr><tr><td><span class="tocsublinknumber">3.6.10<tt>&nbsp;</tt></span><a href="#%28part._s~3atables~3amethods%29" class="tocsubseclink" data-pltdoc="x">Advanced Table Manipulation</a></td></tr><tr><td><a href="#%28part._tables_.Row%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">Row</span></a></td></tr><tr><td><a href="#%28part._tables_raw-row%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">raw-<wbr></wbr>row</span></a></td></tr><tr><td><a href="#%28part._tables_.Row_row_get-column-names%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.get-<wbr></wbr>column-<wbr></wbr>names</span></a></td></tr><tr><td><a href="#%28part._tables_.Row_row_get-value%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.get-<wbr></wbr>value</span></a></td></tr><tr><td><a href="#%28part._tables_.Row_row_get%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.get</span></a></td></tr><tr><td><a href="#%28part._tables_.Table%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">Table</span></a></td></tr><tr><td><a href="#%28part._tables_table-from-rows%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">table-<wbr></wbr>from-<wbr></wbr>rows</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_length%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.length</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_row%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.row</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_build-column%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.build-<wbr></wbr>column</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_add-column%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.add-<wbr></wbr>column</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_add-row%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.add-<wbr></wbr>row</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_row-n%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.row-<wbr></wbr>n</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_get-column%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.get-<wbr></wbr>column</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_column%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.column</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_column-n%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.column-<wbr></wbr>n</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_column-names%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.column-<wbr></wbr>names</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_all-rows%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.all-<wbr></wbr>rows</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_all-columns%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.all-<wbr></wbr>columns</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_filter%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.filter</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_filter-by%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.filter-<wbr></wbr>by</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_order-by%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.order-<wbr></wbr>by</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_order-by-columns%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.order-<wbr></wbr>by-<wbr></wbr>columns</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_increasing-by%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.increasing-<wbr></wbr>by</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_decreasing-by%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.decreasing-<wbr></wbr>by</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_select-columns%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.select-<wbr></wbr>columns</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_transform-column%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.transform-<wbr></wbr>column</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_rename-column%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.rename-<wbr></wbr>column</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_stack%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.stack</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_empty%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.empty</span></a></td></tr><tr><td><a href="#%28part._tables_.Table_table_drop%29" class="tocsubnonseclink" data-pltdoc="x"><span class="stt">.drop</span></a></td></tr></table></div></div><div class="maincolumn"><div class="main"><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="raw-arrays.html" title="backward to &quot;3.5 RawArray&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="Builtins_and_Libraries.html" title="up to &quot;3 Builtins and Libraries&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="lists.html" title="forward to &quot;3.7 lists&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h4>3.6<tt>&nbsp;</tt><a name="(part._tables)"></a>Tables</h4><p><div class="SIntrapara">Usage:</div><div class="SIntrapara"><span class="pyret-highlight"><span class="stt">include tables</span></span></div><div class="SIntrapara"><span class="pyret-highlight"><span class="stt">import tables as ...</span></span></div><div class="SIntrapara">There are many examples of tables in computing, with
+spreadsheets being the most obvious.</div></p><p>A <a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a> is made up of <span style="font-weight: bold">rows</span> and <span style="font-weight: bold">columns</span>. All rows have the
+same number of columns, in the same order. Each column has a name.  Each column
+may also be assigned a type via an annotation; if so, all entries in a column
+will then be checked against the annotation.  Unsurprisingly, they are useful
+for representing tabular data from sources like spreadsheets or CSV files.</p><p><span style="font-weight: bold">Note:</span> The <a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a> data type and the syntax for manipulating
+tables is built in to Pyret without needing any imports; however, using the
+<a href="#%28part._.Reducers%29" data-pltdoc="x">Reducers</a> or the functions in <a href="#%28part._s~3atables~3amethods%29" data-pltdoc="x">Advanced Table Manipulation</a> require the
+<span class="pyret-highlight"><span class="stt">import</span></span> line above.</p><h5>3.6.1<tt>&nbsp;</tt><a name="(part._s~3atables)"></a>Creating Tables</h5><p>A simple <a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a> can be directly created with a <span class="pyret-highlight"><span class="stt">table:</span></span>
+expression, which lists any number of
+columns, with optional annotations, and then any number of rows.  For example,
+this expression creates a table with three columns, <span class="pyret-highlight"><span class="stt">name</span></span>, <span class="pyret-highlight"><span class="stt">age</span></span>,
+and <span class="pyret-highlight"><span class="stt">favorite-color</span></span>, and three rows:</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>my-table = table: name :: String, age :: Number, favorite-color :: String
+  row: "Bob", 12, "blue"
+  row: "Alice", 17, "green"
+  row: "Eve", 13, "red"
+end</p></pre></pre></div></p></div><p><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>Indeed, <span class="pyret-highlight"><span class="stt">my-table</span></span> is used as a running example in much of
+the following.</p></blockquote></blockquote></blockquote></div><div class="SIntrapara">Evaluating <span class="pyret-highlight"><span class="stt">my-table</span></span> in the interactions window after running the
+program above will display a formatted version of the table:</div></p><p><img src="table-print.png" alt="" width="280" height="198"/></p><h5>3.6.2<tt>&nbsp;</tt><a name="(part._s~3atables~3aloading)"></a>Loading Tables</h5><p>Pyret supports loading spreadsheets from Google Sheets and
+interpreting them as Pyret tables.</p><p>Currently no public interface for creating additional sources
+beyond Google Sheets is supported.</p><p>You can import most relevant file types, including .xlsx,
+into Google Sheets, and then into Pyret, so you should be able to
+get almost any tabular data into Pyret with a little effort.</p><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>In Google Sheets, you create a file, referred to as a
+"spreadsheet" that contains one or more grids called
+"sheets."  Excel refers to the file as a "workbook" and each
+grid as a "worksheet."  We will follow Google Sheets&rsquo;
+nomenclature.</p></blockquote></blockquote></blockquote><p>Pyret assumes each sheet contains only one table of neatly formatted
+data, without skipping columns or extra comments other than an
+optional single header row at the top.</p><p>As a simple and consistent example, let&rsquo;s say we wanted to import the
+<span class="stt">my-table</span> data from a spreadsheet.</p><p><img src="gsheet-1.png" alt="" width="658" height="353"/></p><p>To import this data into a Pyret program, you need to get the
+spreadsheet&rsquo;s
+unique Google ID.  The easiest way to do this is to click
+on the blue <span class="stt">Share</span> button in the upper right.</p><p><img src="gsheet-2.png" alt="" width="601" height="334"/></p><p>If you don&rsquo;t
+want to share your spreadsheet with anyone else, click
+<span class="stt">Advanced</span> in the lower right of the <span class="stt">Share with others</span>
+dialog, then copy the <span class="stt">Link to share</span>, highlighted in orange below,
+and paste it into your Pyret definitions area (or another editor).</p><p><img src="gsheet-3.png" alt="" width="535" height="264"/></p><p>The URL will look something like</p><p><span class="stt">https://docs.google.com/spreadsheets/d/1BAexzf08Q5o8bXb_k8PwuE3tMKezxRfbKBKT-4L6UzI/edit?usp=sharing</span></p><p>The Google ID is the part between <span class="stt">/d/</span> and <span class="stt">/edit...</span>, in this case:</p><p><span class="stt">1BAexzf08Q5o8bXb_k8PwuE3tMKezxRfbKBKT-4L6UzI</span></p><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>If you do want to share the spreadsheet with others, click
+on the blue <span class="stt">Share</span> button as above, and then click
+<span class="stt">Get sharable link</span>, choose the appropriate level of
+sharing, and copy the URL to get the Google ID as above.</p></blockquote></blockquote></blockquote><p>Now you can load the spreadsheet into your Pyret program:</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>import gdrive-sheets as GS
+
+imported-my-table =
+  GS.load-spreadsheet("1BAexzf08Q5o8bXb_k8PwuE3tMKezxRfbKBKT-4L6UzI")</p></pre></pre></div></p></div><p>You can use <span class="pyret-highlight"><span class="stt">include</span></span> instead of <span class="pyret-highlight"><span class="stt">import as...</span></span> to cut down on
+some typing by omitting the <span class="stt">GS.</span> before the <span class="pyret-highlight"><span class="stt">tables</span></span> module
+functions.</p><p><div class="SIntrapara"><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>include gdrive-sheets
+
+imported-my-table =
+  load-spreadsheet("1BAexzf08Q5o8bXb_k8PwuE3tMKezxRfbKBKT-4L6UzI")</p></pre></pre></div></p></div></div><div class="SIntrapara"><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>We&rsquo;ll use
+<span class="pyret-highlight"><span class="stt">import</span></span> and the prefix <span class="stt">GS.</span> in the following examples.  If you
+use <span class="pyret-highlight"><span class="stt">include</span></span>, omit <span class="stt">GS.</span> where used below.</p></blockquote></blockquote></blockquote></div></p><p>When data is loaded into a table, we recommend using <span style="font-style: italic">sanitizers</span>
+to properly load each entry of the table as the correct Pyret type.  The
+supported sanitizers are imported from the <span class="pyret-highlight"><span class="stt">data-source</span></span> module.</p><p>The sanitizers currently provided by Pyret are:</p><ul><li><p><span style="font-weight: bold">string-sanitizer</span> tries to convert anything to a <a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a></p></li><li><p><span style="font-weight: bold">num-sanitizer</span> tries to convert  numbers, strings and booleans to <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>s</p></li><li><p><span style="font-weight: bold">bool-sanitizer</span> tries to convert numbers, strings and booleans to <a href="_global_.html#%28part._~3cglobal~3e_.Boolean%29" data-pltdoc="x"><span class="stt">Boolean</span></a>s</p></li><li><p><span style="font-weight: bold">strict-num-sanitizer</span> tries to convert numbers and strings (not booleans) to <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>s</p></li><li><p><span style="font-weight: bold">strings-only</span> converts only strings to <a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a>s</p></li><li><p><span style="font-weight: bold">numbers-only</span> converts only numbers to <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>s</p></li><li><p><span style="font-weight: bold">booleans-only</span> converts only booleans to <a href="_global_.html#%28part._~3cglobal~3e_.Boolean%29" data-pltdoc="x"><span class="stt">Boolean</span></a>s</p></li><li><p><span style="font-weight: bold">empty-only</span> converts only empty cells to <a href="option.html#%28part._option_none%29" data-pltdoc="x"><span class="stt">none</span></a>s</p></li></ul><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>While the <span class="stt">data-source</span> library provides sanitizers which should cover
+most use cases, there may be times when one would like to create a custom
+data sanitizer. To do so, one must simply create a function which conforms
+to the <a href="data-source.html#%28part._data-source_.Sanitizer%29" data-pltdoc="x"><span class="stt">Sanitizer</span></a> type in the <span class="stt">data-source</span> module.</p></blockquote></blockquote></blockquote><p>Use the <span class="pyret-highlight"><span class="stt">load-table:</span></span> expression to create a table from an
+imported sheet.</p><p>Each spreadsheet file contains multiple, named sheets, displayed
+as tabs across the bottom of the Sheets user interface.  When you start
+working with the data in an imported spreadsheet, you need to indentify
+which sheet you are using as the data source.</p><p>The <span class="pyret-highlight"><span class="stt">source:</span></span> expression should be followed by the imported spreadsheet,
+calling the <a href="gdrive-sheets.html#%28part._gdrive-sheets_.Spreadsheet_shared._methods_sheet-by-name%29" data-pltdoc="x"><span class="stt">.sheet-by-name</span></a> method with two arguments, the sheet name and
+a boolean flag indicating whether or not there is a header row in the sheet
+that should be ignored.  In our example above,  <span class="stt">imported-my-table</span> contains
+one sheet, called <span class="stt">3-rows</span>,
+and there is a header row that should be ignored by the importer, so the
+<span class="pyret-highlight"><span class="stt">source:</span></span> expression would be written as illustrated below.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>import gdrive-sheets as GS
+import data-source as DS
+
+imported-my-table =
+  GS.load-spreadsheet("1BAexzf08Q5o8bXb_k8PwuE3tMKezxRfbKBKT-4L6UzI")
+
+my-table = load-table: name :: String, age :: Number, favorite-color :: String
+  source: imported-my-table.sheet-by-name("3-rows", true)
+  sanitize name using DS.string-sanitizer
+  sanitize age using DS.strict-num-sanitizer
+  sanitize favorite-color using DS.string-sanitizer
+end</p></pre></pre></div></p></div><p>In general, it is <span style="font-style: italic">safest</span> to sanitize <span style="font-style: italic">every</span> input column, since it
+is the only way to guarantee that the data source will not guess the column&rsquo;s
+type incorrectly.</p><p>Note that Google Sheets, and other spreadsheets, themselves
+assign or infer types to data in a way that often is not apparent to the user
+and is a common source of errors when exporting from or between spreadsheet
+applications.</p><h5>3.6.3<tt>&nbsp;</tt><a name="(part._s~3atables~3aselect)"></a>Selecting Columns</h5><p>The <span class="pyret-highlight"><span class="stt">select</span></span> expression can be used to create a new table from a subset
+of the columns of an existing one.  For example, we can get just the names
+and ages from <span class="pyret-highlight"><span class="stt">my-table</span></span> above:</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>names-and-ages = select name, age from my-table end
+check:
+  names-and-ages is table: name, age
+    row: "Bob", 12
+    row: "Alice", 17
+    row: "Eve", 13
+  end
+end</p></pre></pre></div></p></div><h5>3.6.4<tt>&nbsp;</tt><a name="(part._.Filtering_.Tables)"></a>Filtering Tables</h5><p>The <span class="pyret-highlight"><span class="stt">sieve</span></span> mechanism allows for filtering out rows of tables based
+on some criteria. The <span class="pyret-highlight"><span class="stt">using</span></span> keyword specifies which columns may be
+used in the body of the <span class="pyret-highlight"><span class="stt">sieve</span></span> expression.</p><p>For instance, we can find the individuals in <span class="pyret-highlight"><span class="stt">my-table</span></span> who are old
+enough to drive in the United States.</p><pre class="pyret-block"><pre class="pyret-highlight good-ex"><p>can-drive = sieve my-table using age:
+  age &gt;= 16
+end
+check:
+  can-drive is table: name, age, favorite-color
+    row: "Alice", 17, "green"
+  end
+end</p></pre></pre><p>Note that the <span class="pyret-highlight"><span class="stt">sieve</span></span> block must explicitly list the columns used to
+filter out values with <span class="pyret-highlight"><span class="stt">using</span></span>.  The following would signal an undefined
+name error for <span class="pyret-highlight"><span class="stt">age</span></span>, because names being used in the expression body
+must be listed:</p><pre class="pyret-block"><pre class="pyret-highlight bad-ex"><p>can-drive = sieve my-table using name:
+  # age is not visible inside of this expression
+  age &gt;= 16
+end</p></pre></pre><h5>3.6.5<tt>&nbsp;</tt><a name="(part._.Ordering_.Tables)"></a>Ordering Tables</h5><p>To arrange the rows of a table in some particular order, use an <span class="pyret-highlight"><span class="stt">order</span></span>
+expression.  This can be done with any column whose
+type supports the use of <span class="pyret-highlight"><span class="stt">&lt;</span></span> and <span class="pyret-highlight"><span class="stt">&gt;</span></span>, including <a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a>s.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>name-ordered = order my-table:
+  name ascending
+end
+check:
+  name-ordered is table: name, age, favorite-color
+    row: "Alice", 17, "green"
+    row: "Bob", 12, "blue"
+    row: "Eve", 13, "red"
+  end
+end</p></pre></pre></div></p></div><p>Tables can be sorted by multiple columns.  In general you may select as many
+columns as desired, and can mix and match <span class="pyret-highlight"><span class="stt">ascending</span></span> and
+<span class="pyret-highlight"><span class="stt">descending</span></span> sorts.  No column can be mentioned more than once.</p><pre class="pyret-block"><pre class="pyret-highlight"><p>order some-table:
+  column1 ascending,
+  column3 descending,
+  column2 ascending
+end</p></pre></pre><p>This example will first sort the data in increasing order on <span class="stt">column1</span>.  If there
+are any duplicate values in <span class="stt">column1</span>, each such group of rows will be sorted in
+decreasing order by <span class="stt">column2</span>.  If there are any duplicates in both columns,
+each remaining group will be sorted in increasing order by <span class="stt">column3</span>.</p><h5>3.6.6<tt>&nbsp;</tt><a name="(part._.Transforming_.Tables)"></a>Transforming Tables</h5><p>The <span class="pyret-highlight"><span class="stt">transform</span></span> expression allows the changing of columns within a
+table, similar to the <a href="lists.html#%28part._lists_map%29" data-pltdoc="x"><span class="stt">map</span></a> function over lists (and, just like
+<a href="lists.html#%28part._lists_map%29" data-pltdoc="x"><span class="stt">map</span></a>, <span class="pyret-highlight"><span class="stt">transform</span></span> expressions do not mutate the table, but
+instead return a new one).</p><p><div class="SIntrapara">Suppose we find out that <span class="pyret-highlight"><span class="stt">my-table</span></span> is wrong and everyone is actually
+a year older than it says they are. We can fix our data as follows:
+</div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>age-fixed = transform my-table using age:
+  age: age + 1
+end
+check:
+  age-fixed is table: name, age, favorite-color
+    row: "Bob", 13, "blue"
+    row: "Alice", 18, "green"
+    row: "Eve", 14, "red"
+  end
+end</p></pre></pre></div></p><h5>3.6.7<tt>&nbsp;</tt><a name="(part._.Extracting_.Columns_from_.Tables)"></a>Extracting Columns from Tables</h5><p>A large number of Pyret modules work on <a href="lists.html" data-pltdoc="x">lists</a> instead of tables, so it
+may be desired to pull the contents of one column of a table as a list to
+use it elsewhere. The <span class="pyret-highlight"><span class="stt">extract</span></span> mechanism allows this ability, and
+serves as the primary link between processing tabular data and non-tabular
+Pyret functions.</p><p><div class="SIntrapara">Suppose, for example, we wanted just the names of each person in
+<span class="pyret-highlight"><span class="stt">my-table</span></span>. We could pull those names out as follows:
+</div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>name-list = extract name from my-table end
+check:
+  name-list is [list: "Bob", "Alice", "Eve"]
+end</p></pre></pre></div></p><h5>3.6.8<tt>&nbsp;</tt><a name="(part._.Extending_.Tables)"></a>Extending Tables</h5><p>"Extending" a table means to create a new table with an additional,
+calculated column. There are two types of extensions which can be
+made to tables: mapping extensions and reducing extensions.</p><h5>3.6.8.1<tt>&nbsp;</tt><a name="(part._.Mapping_extensions)"></a>Mapping extensions</h5><p>A mapping column is one whose contents are calculated from other
+columns only in the row it is being added to.  This is analogous
+to the map function for <a href="lists.html" data-pltdoc="x">lists</a>.</p><p>In a mapping expression, the body of the expression defines the name of
+the new column or columns followed by an expression which calculates
+the new value to be placed in each row of the new column.</p><p><div class="SIntrapara">One example of this is a column which tells
+whether the <span class="pyret-highlight"><span class="stt">age</span></span> field of a given row in <span class="pyret-highlight"><span class="stt">my-table</span></span> indicates
+that the person in that row is old enough drive in the United States or not,
+that is, whether that person is at least 16:
+</div><div class="SIntrapara"><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>can-drive-col = extend my-table using age:
+  can-drive: age &gt;= 16
+end
+check:
+  can-drive-col is table: name, age, can-drive
+    row: "Bob", 12, false
+    row: "Alice", 17, true
+    row: "Eve", 13, false
+  end
+end</p></pre></pre></div></p></div></div></p><p>Another example creates a new table including baseball players&rsquo;
+calculated batting average and slugging percentage in extended
+columns:</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>batting = table: batter :: String,
+  at-bats :: Number, singles :: Number, doubles :: Number,
+  triples :: Number, home-runs :: Number
+  row: "Julia", 20, 4, 2, 0, 0
+  row: "Vivian", 25, 6, 1, 1, 1
+  row: "Eddie", 28, 5, 2, 0, 2
+end
+batting-avg-and-slugging = extend batting
+  using at-bats, singles, doubles, triples, home-runs:
+  batting-average: (singles + doubles + triples + home-runs) / at-bats,
+  slugging-percentage: (singles + (doubles * 2) +
+    (triples * 3) + (home-runs * 4)) / at-bats
+end</p></pre></pre></div></p></div><p><img src="baseball.png" alt="" width="645" height="209"/></p><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>As in <a href="Expressions.html#%28part._s~3atables~3atransform%29" data-pltdoc="x"><span class="pyret-highlight"><span class="stt">transform</span></span></a>,
+you must specify which columns will be used to calculate the
+value in the
+<span class="pyret-highlight"><span class="stt">extend</span></span> expression using the <span class="pyret-highlight"><span class="stt">using</span></span> keyword.</p></blockquote></blockquote></blockquote><h5>3.6.8.2<tt>&nbsp;</tt><a name="(part._.Reducers)"></a>Reducers</h5><p>A "reducing" column is one whose information is computed from the
+row it is being added to <span style="font-style: italic">and one or more of the rows above</span>
+that row.  This is
+analogous to the <a href="lists.html#%28part._lists_fold%29" data-pltdoc="x"><span class="stt">fold</span></a> function for <a href="lists.html" data-pltdoc="x">lists</a>.</p><p>The simplest examples of reducing use reducers built into Pyret.</p><p>For each reducer below, you will need to specify
+a name for the new column and which existing column new value
+will be based on.  You will also need to
+<span class="pyret-highlight"><span class="stt">import</span></span> or <span class="pyret-highlight"><span class="stt">include</span></span> <span class="pyret-highlight"><span class="stt">tables</span></span>.</p><div class="value"><div class="boxed pyret-header"><a name="(part._tables_running-sum)" class="pyret-code"></a><a href="#%28part._tables_running-sum%29" data-pltdoc="x"><span class="stt">running-sum</span></a><span class="stt"> :: </span><a href="#%28part._tables_.Reducer%29" data-pltdoc="x"><span class="stt">Reducer</span></a>&lt;<a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>, <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>, <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>&gt;</div><div class="description"></div></div><p>Creates a new column where in each row,
+the running sum will be the added
+value of the cell in the selected column plus all the cells
+<span style="font-style: italic">above</span> the cell in the same column.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>import tables as T
+dem-primary-delegates = table: state :: String, clinton :: Number,
+  sanders :: Number
+  row: "Iowa", 29, 21
+  row: "New Hampshire", 15, 16
+  row: "Nevada", 27, 16
+  row: "South Carolina", 44, 14
+end
+running-total-delegates = extend dem-primary-delegates
+  using clinton, sanders:
+  total-clinton: T.running-sum of clinton,
+  total-sanders: T.running-sum of sanders
+end
+print(running-total-delegates)</p></pre></pre></div></p></div><p><img src="primaries.png" alt="" width="547" height="205"/></p><div class="value"><div class="boxed pyret-header"><a name="(part._tables_difference)" class="pyret-code"></a><a href="#%28part._tables_difference%29" data-pltdoc="x"><span class="stt">difference</span></a><span class="stt"> :: </span><a href="#%28part._tables_.Reducer%29" data-pltdoc="x"><span class="stt">Reducer</span></a>&lt;<a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>, <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>, <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>&gt;</div><div class="description"><p>The <span class="pyret-highlight"><span class="stt">difference</span></span> extender creates a new column
+containing the difference between the value in
+the current row (of the selected column) minus the value in <span style="font-style: italic">only</span>
+the row directly above.  In the first row, the value is unchanged.
+Since there&rsquo;s no value before the first row, Pyret behaves as if it were zero.</p><blockquote class="refpara"><blockquote class="refcolumn"><blockquote class="refcontent"><p>Both <span class="pyret-highlight"><span class="stt">difference</span></span> and <a href="#%28part._tables_difference-from%29" data-pltdoc="x"><span class="stt">difference-from</span></a> do
+<span style="font-style: italic">not</span> calculate a running difference, only the difference between
+the selected row and the single row above.</p></blockquote></blockquote></blockquote><p><div class="SIntrapara"><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>import tables as T
+test-scores = table: year :: Number,
+  math-score :: Number, reading-score :: Number
+  row: 2014, 87, 89
+  row: 2015, 98, 93
+  row: 2016, 79, 83
+  row: 2017, 85, 90
+end
+changes-by-year = extend test-scores using math-score, reading-score:
+  math-change-from-previous: T.difference of math-score,
+  reading-change-from-previous: T.difference of reading-score
+end</p></pre></pre></div></p></div></div><div class="SIntrapara"><img src="difference-table.png" alt="" width="451" height="237"/></div></p></div></div><p><a name="(idx._(gentag._148))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_difference-from)" class="pyret-code"></a><a href="#%28part._tables_difference-from%29" data-pltdoc="x"><span class="stt">difference-from</span></a><span class="stt"> :: </span><span class="stt">(</span><span class="stt">start-value</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Reducer%29" data-pltdoc="x"><span class="stt">Reducer</span></a><span class="stt">&lt;</span><a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a><span class="stt">, </span><a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a><span class="stt">, </span><a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a><span class="stt">&gt;</span></div><div class="description"><p>Like <a href="#%28part._tables_difference%29" data-pltdoc="x"><span class="stt">difference</span></a>, except the starting value is specified, instead
+of defaulting to 0.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p># calculates velocity of a dropping ball
+ball-info = table: pos-y
+  row: 25
+  row: 24
+  row: 21
+  row: 16
+  row: 0
+end
+with-velocity = extend ball-info using pos-y:
+  vel-y: T.difference-from(25) of pos-y
+end
+check:
+  with-velocity is table: pos-y, vel-y
+    row: 25, 0
+    row: 24, -1
+    row: 21, -3
+    row: 16, -5
+    row: 0, -16
+  end
+end</p></pre></pre></div></p></div></div><div class="examples"></div></div><div class="value"><div class="boxed pyret-header"><a name="(part._tables_running-mean)" class="pyret-code"></a><a href="#%28part._tables_running-mean%29" data-pltdoc="x"><span class="stt">running-mean</span></a><span class="stt"> :: </span><a href="#%28part._tables_.Reducer%29" data-pltdoc="x"><span class="stt">Reducer</span></a>&lt;<a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>, <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>, <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>&gt;</div><div class="description"></div></div><p>Creates a new column  where the
+value in each row is equal to the
+mean of <span style="font-style: italic">all</span> values in the designated column in the current row and
+above.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>import tables as T
+my-grades = table: score :: Number
+  row: 87
+  row: 91
+  row: 98
+  row: 82
+end
+with-running-mean = extend my-grades
+  using score:
+  mean: T.running-mean of score
+end
+check:
+  with-running-mean is table: score, mean
+    row: 87, 87
+    row: 91, 89
+    row: 98, 92
+    row: 82, 89.5
+  end
+end</p></pre></pre></div></p></div><div class="value"><div class="boxed pyret-header"><a name="(part._tables_running-max)" class="pyret-code"></a><a href="#%28part._tables_running-max%29" data-pltdoc="x"><span class="stt">running-max</span></a><span class="stt"> :: </span><a href="#%28part._tables_.Reducer%29" data-pltdoc="x"><span class="stt">Reducer</span></a>&lt;<a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>, <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>, <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>&gt;</div><div class="description"></div></div><div class="value"><div class="boxed pyret-header"><a name="(part._tables_running-min)" class="pyret-code"></a><a href="#%28part._tables_running-min%29" data-pltdoc="x"><span class="stt">running-min</span></a><span class="stt"> :: </span><a href="#%28part._tables_.Reducer%29" data-pltdoc="x"><span class="stt">Reducer</span></a>&lt;<a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>, <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>, <a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a>&gt;</div><div class="description"></div></div><p>Creates a new column that contains the maximum
+or minimum value in the selected column in the current row or
+above.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>some-numbers = table: n :: Number
+  row: 4
+  row: 9
+  row: 3
+  row: 1
+  row: 10
+end
+with-min-max = extend some-numbers using n:
+  max: T.running-max of n,
+  min: T.running-min of n
+end
+check:
+  with-min-max is table: n, max, min
+    row: 4, 4, 4
+    row: 9, 9, 4
+    row: 3, 9, 3
+    row: 1, 9, 1
+    row: 10, 10, 1
+  end
+end</p></pre></pre></div></p></div><p><a name="(idx._(gentag._149))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_running-fold)" class="pyret-code"></a><a href="#%28part._tables_running-fold%29" data-pltdoc="x"><span class="stt">running-fold</span></a><span class="stt"> :: </span><span class="stt">(</span><span class="stt">start-value :: Result</span>, <span class="stt">combiner :: (Result, Col -&gt; Result)</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Reducer%29" data-pltdoc="x"><span class="stt">Reducer</span></a><span class="stt">&lt;</span><span class="stt">Result</span><span class="stt">, </span><span class="stt">Col</span><span class="stt">, </span><span class="stt">Result</span><span class="stt">&gt;</span></div><div class="description"></div><div class="examples"></div></div><p><a name="(idx._(gentag._150))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_running-reduce)" class="pyret-code"></a><a href="#%28part._tables_running-reduce%29" data-pltdoc="x"><span class="stt">running-reduce</span></a><span class="stt"> :: </span><span class="stt">(</span><span class="stt">combiner :: (Col, Col -&gt; Col)</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Reducer%29" data-pltdoc="x"><span class="stt">Reducer</span></a><span class="stt">&lt;</span><span class="stt">Col</span><span class="stt">, </span><span class="stt">Col</span><span class="stt">, </span><span class="stt">Col</span><span class="stt">&gt;</span></div><div class="description"></div><div class="examples"></div></div><p><span class="pyret-highlight"><span class="stt">running-fold</span></span> and <span class="pyret-highlight"><span class="stt">running-reduce</span></span> allow you
+to specify a function used to calculate
+the value in the new column, based on a running calculation of all the
+values in the selected column in the current row and above.</p><p>The difference between <span class="pyret-highlight"><span class="stt">running-fold</span></span> and <span class="pyret-highlight"><span class="stt">running-reduce</span></span> is
+that <span class="pyret-highlight"><span class="stt">running-fold</span></span> requires an explicit <span class="stt">start-value</span>.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>import tables as T
+count-if-driver = T.running-fold(0,
+  lam(sum, col): if col &gt;= 16: 1 + sum else: sum end end)
+t = table: name, age
+  row: "Bob", 17
+  row: "Mary", 22
+  row: "Jane", 6
+  row: "Jim", 15
+  row: "Barbara", 30
+end
+with-driver-count = extend t using age:
+  total-drivers: count-if-driver of age
+end
+check:
+  with-driver-count is table: name, age, total-drivers
+    row: "Bob", 17, 1
+    row: "Mary", 22, 2
+    row: "Jane", 6, 2
+    row: "Jim", 15, 2
+    row: "Barbara", 30, 3
+  end
+end
+
+checks = table: check-number :: Number, withdrawal :: Number
+  row: 001, 50
+  row: 002, 100
+  row: 003, 500
+end
+with-checking-balance = extend checks using withdrawal:
+  current-balance: T.running-fold(1000,
+    lam(total, col): total - col end) of withdrawal
+end
+check:
+  with-checking-balance is table: check-number, withdrawal, current-balance
+    row: 001, 50, 950
+    row: 002, 100, 850
+    row: 003, 500, 350
+  end
+end
+</p></pre></pre></div></p></div><p>While the reducers found in the <span class="stt">tables</span> module should cover most all
+use cases, there may be times when one would like to create a reducer of their
+own. To do so, one must construct an object of the following type:</p><p><div class="SIntrapara"><a name="(idx._(gentag._151))"></a></div><div class="SIntrapara"><div class="boxed"><a name="(part._tables_.Reducer)" class="pyret-code"></a><a href="#%28part._tables_.Reducer%29" data-pltdoc="x"><span class="stt">Reducer</span></a><span class="stt">&lt;Acc, InVal, OutVal&gt;</span></div></div></p><p><a name="(idx._(gentag._152))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Reducer_reducer_one)" class="pyret-code"></a><span class="stt">.one</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">value-from-column :: InVal</span><span class="stt">) -&gt; {Acc; OutVal}</span></div><div class="description"></div><div class="examples"></div></div><p><a name="(idx._(gentag._153))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Reducer_reducer_reduce)" class="pyret-code"></a><span class="stt">.reduce</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">accumulator :: Acc</span>, <span class="stt">value-from-column :: InVal</span><span class="stt">) -&gt; {Acc; OutVal}</span></div><div class="description"></div><div class="examples"></div></div><p>Reducers are essentially descriptions of folds (in the list <a href="lists.html#%28part._lists_fold%29" data-pltdoc="x"><span class="stt">fold</span></a>
+sense) over table columns. The way reducers are called by the language
+runtime is as follows: the value(s) from the first row are passed to the
+reducer&rsquo;s <a href="#%28part._tables_.Reducer_reducer_one%29" data-pltdoc="x"><span class="stt">.one</span></a> method, which should return a tuple containing both
+any accumulated information needed for the fold and the value which should
+be placed in the new column in that row. The remaining rows are then
+sequentially populated using the reducer&rsquo;s <a href="#%28part._tables_.Reducer_reducer_reduce%29" data-pltdoc="x"><span class="stt">.reduce</span></a> method, which is
+identical to the <a href="#%28part._tables_.Reducer_reducer_one%29" data-pltdoc="x"><span class="stt">.one</span></a> method except that it receives an additional
+argument which is the previously mentioned accumulated information from the
+previous row.</p><p><div class="SIntrapara">To illustrate, a <span class="pyret-highlight"><span class="stt">running-mean</span></span> reducer which is equivalent to the
+one provided by the <span class="stt">tables</span> module could be implemented as follows:
+</div><div class="SIntrapara"><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>import tables as T
+running-mean :: T.Reducer&lt;{Number; Number}, Number, Number&gt; = {
+  one: lam(n): {{n; 1}; n} end,
+  reduce: lam({sum; count}, n):
+    { {sum + n; count + 1}; (sum + n) / (count + 1) }
+  end
+}</p></pre></pre></div></p></div></div></p><h5>3.6.9<tt>&nbsp;</tt><a name="(part._s~3atables~3acomparing)"></a>Comparing Tables</h5><p>The order of both rows and columns are part of a table value.  To be considered
+equal, tables need to have all the same rows and columns, with the rows and
+columns appearing in the same order.</p><h5>3.6.10<tt>&nbsp;</tt><a name="(part._s~3atables~3amethods)"></a>Advanced Table Manipulation</h5><p>The operations listed above come with a significant restriction: all column
+names must also be valid identifier names. In addition, column names are always
+chosen directly by the programmer in each query, and there&rsquo;s no way to abstract
+over them.</p><p>To see why this is a significant restriction, consider this (non-working)
+example:</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>fun sieve-by-large-number(t :: Table, colname :: String) -&gt; Table:
+  doc: ```Return a new table containing the rows of t whose column
+          named by the string provided for colname have value greater than
+          1000```
+  sieve t using colname:
+    colname &gt; 1000
+  end
+where:
+  my-t = table: item, price
+    row: "Chromebook", 250
+    row: "Macbook", 1300
+  end
+
+  sieve-by-large-number(my-t, "price") is table: item, price
+    row: "Macbook", 1300
+  end
+end</p></pre></pre></div></p></div><p>We may well want to write this if we have a number of tables, all of which we
+want to sieve by the same criteria. However, it isn&rsquo;t possible to abstract over
+a column name using <span class="stt">sieve</span>: the program above conflates the identifier
+<span class="stt">colname</span> with the column name <span class="stt">colname</span>. As a result, that program gives
+an error that the <span class="stt">colname</span> in the query shadows the <span class="stt">colname</span> that&rsquo;s a
+parameter of the function.</p><p>Pyret provides facilities for writing programs like the above, they are simply
+a different set of operations than the query syntax. These table manipulation
+operations are useful for building abstractions over tables and for creating
+tables programmatically.</p><p><div class="SIntrapara"><a name="(idx._(gentag._154))"></a></div><div class="SIntrapara"><div class="boxed"><a name="(part._tables_.Row)" class="pyret-code"></a><a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a><span class="stt"></span></div></div><div class="SIntrapara">The type of all row values.
+</div><div class="SIntrapara"><div class="boxed pyret-header"><span class="stt">[</span><a name="(part._tables_raw-row)" class="pyret-code"></a><a href="#%28part._tables_raw-row%29" data-pltdoc="x"><span class="stt">raw-row</span></a><span class="stt">: </span><span class="stt">elt</span><span class="stt"> :: </span><span class="stt">{</span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">; </span><span class="stt">Col</span><span class="stt">}</span><span class="stt">, ...</span><span class="stt">] -&gt; </span><a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a></div></div></p><p>Takes a sequence of tuples and constructs a <a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a> value. Note that
+the type for each column may be different. The constructed row can be added to
+appropriate tables by using the table methods like <a href="#%28part._tables_.Table_table_add-row%29" data-pltdoc="x"><span class="stt">.add-row</span></a>.</p><p>It is often preferable to construct rows for an existing table by using the
+<a href="#%28part._tables_.Table_table_row%29" data-pltdoc="x"><span class="stt">.row</span></a> method, which avoids typing out the names of each
+column for each created row, and provides built-in checking for the count of
+columns.</p><p><a name="(idx._(gentag._155))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Row_row_get-column-names)" class="pyret-code"></a><span class="stt">.get-column-names</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">&gt;</span></div><div class="description"></div><div class="examples"></div></div><p>Produces a list of strings containing the names of the columns in the row.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>check:
+  r = [raw-row: {"city"; "NYC"}, {"pop"; 8500000}]
+  r.get-column-names() is [list: "NYC", "pop"]
+end</p></pre></pre></div></p></div><p><a name="(idx._(gentag._156))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Row_row_get-value)" class="pyret-code"></a><span class="stt">.get-value</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">col-name</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">) -&gt; Col</span></div><div class="description"></div><div class="examples"></div></div><p>Consumes the name of a column, and produces the corresponding value. Results in
+an error if the value isn&rsquo;t found. Square-bracket (<span class="stt">[]</span>) accessor syntax
+uses <span class="stt">get-value</span>, which is often more pleasant to write than writing out
+<span class="stt">get-value</span> fully.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>check:
+  r = [raw-row: {"city"; "NYC"}, {"pop"; 8500000}]
+  r.get-value("pop") is 8500000
+  r["pop"] is 850000
+end</p></pre></pre></div></p></div><p><a name="(idx._(gentag._157))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Row_row_get)" class="pyret-code"></a><span class="stt">.get</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">col-name</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">)</span><span class="stt"> -&gt; </span><a href="option.html#%28part._option_.Option%29" data-pltdoc="x"><span class="stt">Option</span></a><span class="stt">&lt;</span><span class="stt">Col</span><span class="stt">&gt;</span></div><div class="description"></div><div class="examples"></div></div><p>Consumes the name of a column, and produces a <a href="option.html#%28part._option_some%29" data-pltdoc="x"><span class="stt">some</span></a>
+containing the corresponding value if it&rsquo;s present, or <a href="option.html#%28part._option_none%29" data-pltdoc="x"><span class="stt">none</span></a> if it isn&rsquo;t.</p><p><div class="SIntrapara"><a name="(idx._(gentag._158))"></a></div><div class="SIntrapara"><div class="boxed"><a name="(part._tables_.Table)" class="pyret-code"></a><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a><span class="stt"></span></div></div><div class="SIntrapara">The type of all tables.
+</div><div class="SIntrapara"><div class="boxed pyret-header"><span class="stt">[</span><a name="(part._tables_table-from-rows)" class="pyret-code"></a><a href="#%28part._tables_table-from-rows%29" data-pltdoc="x"><span class="stt">table-from-rows</span></a><span class="stt">: </span><span class="stt">elt</span><span class="stt"> :: </span><a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a><span class="stt">, ...</span><span class="stt">] -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div></div></p><p>A collection constructor that creates tables from <a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a> values.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>check:
+  t = [table-from-rows:
+    [raw-row: {"A"; 5}, {"B"; 7}, {"C"; 8}],
+    [raw-row: {"A"; 1}, {"B"; 2}, {"C"; 3}]
+  ]
+
+  t.length() is 2
+  t.column("A") is [list: 5, 1]
+  t.row-n(0) is [raw-row: {"A"; 5}, {"B"; 7}, {"C"; 8}]
+end</p></pre></pre></div></p></div><p><a name="(idx._(gentag._159))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_length)" class="pyret-code"></a><span class="stt">.length</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a></div><div class="description"></div><div class="examples"></div></div><p>Evaluates to the number of rows in the table.</p><p><a name="(idx._(gentag._160))"></a></p><div class="function"><div class="boxed pyret-header"><dl class="multiline-args"><dt class=""><a name="(part._tables_.Table_table_row)" class="pyret-code"></a><span class="stt">.row</span> :: (</dt><dt class="indent-arg"><span class="stt">col-1 :: Col1,</span></dt><dd class=""></dd><dt class="indent-arg"><span class="stt">col-2 :: Col2,</span></dt><dd class=""></dd><dt class="indent-arg"><span class="stt">... :: ...,</span></dt><dd class=""></dd><dt class="indent-arg"><span class="stt">col-n :: ColN</span></dt><dd class=""></dd><dt class=""><span class="stt">)</span></dt><dt class=""><span class="stt">-&gt; </span><a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a></dt></dl></div><div class="description"></div><div class="examples"></div></div><p>Consumes one value for each column in the table, and produces a
+<a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a> value where each provided value is associated with the
+appropriate column.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>check:
+  t = table: city, pop
+    row: "NYC", 8.5 * 1000000
+    row: "SD", 1.4 * 1000000
+  end
+  r = t.row("Houston", 2.3 * 1000000)
+  r is [raw-row: {"city"; "Houston"}, {"pop"; 2.3 * 1000000}]
+end</p></pre></pre></div></p></div><p><a name="(idx._(gentag._161))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_build-column)" class="pyret-code"></a><span class="stt">.build-column</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a>, <span class="stt">compute-new-val</span><span class="stt"> :: </span><span class="stt">(</span><a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a><span class="stt"> -&gt; </span><span class="stt">Col</span><span class="stt">)</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Consumes an existing table, and produces a new
+table containing an additional column with the given <span class="stt">colname</span>, using
+<span class="stt">compute-new-val</span> to produce the values for that column, once for each row.</p><p>Here, <span class="stt">Col</span> is the type of the new column, determined by the type of value
+the <span class="stt">compute-new-val</span> function returns.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>check:
+  foods = table: name, grams, calories
+    row: "Fries", 200, 500
+    row: "Milkshake", 400, 600
+  end
+  foods-with-cpg = table: name, grams, calories, cal-per-gram
+    row: "Fries", 200, 500, 500/200
+    row: "Milkshake", 400, 600, 600/400
+  end
+
+  fun add-cpg(r :: Row) -&gt; Number:
+    r["calories"] / r["grams"]
+  end
+
+  foods.build-column("cal-per-gram", add-cpg) is foods-with-cpg
+end</p></pre></pre></div></p></div><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>fun add-index(t):
+  var ix = -1
+  t.build-column("index", lam(_) block:
+    ix := ix + 1
+    ix
+  end)
+where:
+  before = table: name
+      row: "Joe"
+      row: "Shriram"
+      row: "Kathi"
+    end
+  after = table: name, index
+      row: "Joe", 0
+      row: "Shriram", 1
+      row: "Kathi", 2
+    end
+  add-index(before) is after
+end</p></pre></pre></div></p></div><p><a name="(idx._(gentag._162))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_add-column)" class="pyret-code"></a><span class="stt">.add-column</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a>, <span class="stt">new-vals</span><span class="stt"> :: </span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><span class="stt">Col</span><span class="stt">&gt;</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Consumes a column name and a list of values, and produces a new table with a
+columng of the given name added, containing the values from <span class="stt">new-vals</span>.</p><p>It is an error if the length of <span class="stt">new-vals</span> is different than the length of
+the table.</p><p><a name="(idx._(gentag._163))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_add-row)" class="pyret-code"></a><span class="stt">.add-row</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">r</span><span class="stt"> :: </span><a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Consumes a table and a row to add, and produces a new table with the given row
+at the end.</p><p><a name="(idx._(gentag._164))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_row-n)" class="pyret-code"></a><span class="stt">.row-n</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">index</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a></div><div class="description"></div><div class="examples"></div></div><p>Consumes an index, and returns the row at that index. The first row has index
+0.</p><p><a name="(idx._(gentag._165))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_get-column)" class="pyret-code"></a><span class="stt">.get-column</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">)</span><span class="stt"> -&gt; </span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><span class="stt">Col</span><span class="stt">&gt;</span></div><div class="description"></div><div class="examples"></div></div><p>Consumes the name of a column, and returns the values in that column as a
+list.</p><p><a name="(idx._(gentag._166))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_column)" class="pyret-code"></a><span class="stt">.column</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">)</span><span class="stt"> -&gt; </span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><span class="stt">Col</span><span class="stt">&gt;</span></div><div class="description"></div><div class="examples"></div></div><p>This method is no longer used (use <a href="#%28part._tables_.Table_table_get-column%29" data-pltdoc="x"><span class="stt">.get-column</span></a>
+instead).</p><p><a name="(idx._(gentag._167))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_column-n)" class="pyret-code"></a><span class="stt">.column-n</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">index</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.Number%29" data-pltdoc="x"><span class="stt">Number</span></a><span class="stt">)</span><span class="stt"> -&gt; </span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><span class="stt">Col</span><span class="stt">&gt;</span></div><div class="description"></div><div class="examples"></div></div><p>Consumes an index, and returns the values in the column at that index as a
+list. The first column has index 0.</p><p><a name="(idx._(gentag._168))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_column-names)" class="pyret-code"></a><span class="stt">.column-names</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">&gt;</span></div><div class="description"></div><div class="examples"></div></div><p>Consumes no arguments, and produces the names of the columns of the table as a
+list.</p><p><a name="(idx._(gentag._169))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_all-rows)" class="pyret-code"></a><span class="stt">.all-rows</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a><span class="stt">&gt;</span></div><div class="description"></div><div class="examples"></div></div><p>Consumes no arguments, and produces a list containing all the rows in the
+table, in the same order they appear in the table.</p><p><a name="(idx._(gentag._170))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_all-columns)" class="pyret-code"></a><span class="stt">.all-columns</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><span class="stt">Col</span><span class="stt">&gt;</span><span class="stt">&gt;</span></div><div class="description"></div><div class="examples"></div></div><p>Consumes no arguments, and produces a list of lists of the column values. The
+columns and values appear in the same order they appeared in the table.</p><p><a name="(idx._(gentag._171))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_filter)" class="pyret-code"></a><span class="stt">.filter</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">predicate</span><span class="stt"> :: </span><span class="stt">(</span><a href="#%28part._tables_.Row%29" data-pltdoc="x"><span class="stt">Row</span></a><span class="stt"> -&gt; </span><a href="_global_.html#%28part._~3cglobal~3e_.Boolean%29" data-pltdoc="x"><span class="stt">Boolean</span></a><span class="stt">)</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Consumes a predicate over rows, and produces a new table containing only the
+rows for which the predicate returned <span class="pyret-highlight"><span class="stt">true</span></span>.</p><p><a name="(idx._(gentag._172))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_filter-by)" class="pyret-code"></a><span class="stt">.filter-by</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a>, <span class="stt">predicate</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">Col</span><span class="stt"> -&gt; </span><a href="_global_.html#%28part._~3cglobal~3e_.Boolean%29" data-pltdoc="x"><span class="stt">Boolean</span></a><span class="stt">)</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Consumes a column name and a predicate over the values of that column, and
+produces a new table containing only the rows for which the predicate returned
+<span class="pyret-highlight"><span class="stt">true</span></span> for that column. The type of argument to the predicate has the
+type of values in the specified column.</p><p><a name="(idx._(gentag._173))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_order-by)" class="pyret-code"></a><span class="stt">.order-by</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a>, <span class="stt">asc</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.Boolean%29" data-pltdoc="x"><span class="stt">Boolean</span></a><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Consumes a column name and whether to order ascending or descending, and
+produces a new table with the rows ordered by the given column.</p><p>If <span class="pyret-highlight"><span class="stt">true</span></span> is given for <span class="stt">asce</span>, the rows are ordered lowest to
+highest by the given column (e.g. using <span class="pyret-highlight"><span class="stt">&lt;</span></span>), and if <span class="pyret-highlight"><span class="stt">false</span></span> is
+given, they are ordered highest to lowest.</p><p><a name="(idx._(gentag._174))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_order-by-columns)" class="pyret-code"></a><span class="stt">.order-by-columns</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">cols</span><span class="stt"> :: </span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><span class="stt">{</span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">; </span><a href="_global_.html#%28part._~3cglobal~3e_.Boolean%29" data-pltdoc="x"><span class="stt">Boolean</span></a><span class="stt">}</span><span class="stt">&gt;</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Consumes a list of tuples describing column orderings, and produces a new table
+according to the given ordering.</p><p>Each element of the list must be a two-element tuple, containing a column name
+and a boolean indicating whether to order ascending or not. As with
+<a href="#%28part._tables_.Table_table_order-by%29" data-pltdoc="x"><span class="stt">.order-by</span></a>, <span class="pyret-highlight"><span class="stt">true</span></span> indicates ascending and
+<span class="pyret-highlight"><span class="stt">false</span></span> indicates descending.</p><p><a name="(idx._(gentag._175))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_increasing-by)" class="pyret-code"></a><span class="stt">.increasing-by</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Like <a href="#%28part._tables_.Table_table_order-by%29" data-pltdoc="x"><span class="stt">.order-by</span></a>, but <span class="stt">ascending</span> is always
+<span class="pyret-highlight"><span class="stt">true</span></span>.</p><p><a name="(idx._(gentag._176))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_decreasing-by)" class="pyret-code"></a><span class="stt">.decreasing-by</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Like <a href="#%28part._tables_.Table_table_order-by%29" data-pltdoc="x"><span class="stt">.order-by</span></a>, but <span class="stt">ascending</span> is always
+<span class="pyret-highlight"><span class="stt">false</span></span>.</p><p><a name="(idx._(gentag._177))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_select-columns)" class="pyret-code"></a><span class="stt">.select-columns</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">colnames</span><span class="stt"> :: </span><a href="lists.html#%28part._lists_.List%29" data-pltdoc="x"><span class="stt">List</span></a><span class="stt">&lt;</span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">&gt;</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Consumes a list of column names, and produces a new table containing only those
+columns. The order of the values in the columns is the same as in the input
+table, and the order of the columns themselves is the order they are given in
+the list.</p><p><a name="(idx._(gentag._178))"></a></p><div class="function"><div class="boxed pyret-header"><dl class="multiline-args"><dt class=""><a name="(part._tables_.Table_table_transform-column)" class="pyret-code"></a><span class="stt">.transform-column</span> :: (</dt><dt class="indent-arg"><span class="stt">colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">,</span></dt><dd class=""></dd><dt class="indent-arg"><span class="stt">f :: (ColIn -&gt; ColOut)</span></dt><dd class=""></dd><dt class=""><span class="stt">)</span></dt><dt class=""><span class="stt">-&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></dt></dl></div><div class="description"></div><div class="examples"></div></div><p>Consumes a column name and a transformation function, and produces a new table
+where the given function has been applied to all values in the specified
+column of the original table.</p><p><a name="(idx._(gentag._179))"></a></p><div class="function"><div class="boxed pyret-header"><dl class="multiline-args"><dt class=""><a name="(part._tables_.Table_table_rename-column)" class="pyret-code"></a><span class="stt">.rename-column</span> :: (</dt><dt class="indent-arg"><span class="stt">old-colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a><span class="stt">,</span></dt><dd class=""></dd><dt class="indent-arg"><span class="stt">new-colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a></dt><dd class=""></dd><dt class=""><span class="stt">)</span></dt><dt class=""><span class="stt">-&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></dt></dl></div><div class="description"></div><div class="examples"></div></div><p>Produces a new table where the specified column name in the original table has
+been renamed to the new name.  The new name must not already be present in the
+table&rsquo;s columns.</p><p><div class="SIntrapara">This operation is essentially the following:
+</div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>fun rename-column(t :: Table, old-colname :: String, new-colname :: String):
+  new-t = t.build-column(new-colname, lam(r): r["old-colname"] end)
+  new-t.drop("old-colname")
+end</p></pre></pre></div><div class="SIntrapara">except that in this code, the renamed column will appear as the rightmost column of
+the result, whereas using <a href="#%28part._tables_.Table_table_rename-column%29" data-pltdoc="x"><span class="stt">.rename-column</span></a>, the renamed
+column will stay in its original place.</div></p><p><a name="(idx._(gentag._180))"></a></p><div class="function"><div class="boxed pyret-header"><dl class="multiline-args"><dt class=""><a name="(part._tables_.Table_table_stack)" class="pyret-code"></a><span class="stt">.stack</span> :: (</dt><dt class="indent-arg"><span class="stt">bot-table</span><span class="stt"> :: </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></dt><dd class=""></dd><dt class=""><span class="stt">)</span></dt><dt class=""><span class="stt">-&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></dt></dl></div><div class="description"></div><div class="examples"></div></div><p>Returns a new table containing all the rows of this table, followed by all the
+rows of the <span class="pyret-highlight"><span class="stt">bot-table</span></span>.  The column names must all match, but the order
+is not required to match.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>check:
+  t1 = table: city, pop
+    row: "Houston", 2400000
+    row: "NYC", 8400000
+  end
+  t2 = table: pop, city # deliberately reversed column order for this example
+    row: 1400000, "San Diego"
+  end
+  t1.stack(t2) is table: city, pop
+    row: "Houston", 2400000
+    row: "NYC", 8400000
+    row: "San Diego", 1400000
+  end
+  t2.stack(t1) is table: pop, city
+    row: 1400000, "San Diego"
+    row: 2400000, "Houston"
+    row: 8400000, "NYC"
+  end
+end</p></pre></pre></div></p></div><p><a name="(idx._(gentag._181))"></a></p><div class="function"><div class="boxed pyret-header"><a name="(part._tables_.Table_table_empty)" class="pyret-code"></a><span class="stt">.empty</span><span class="stt"> :: </span><span class="stt">(</span><span class="stt">)</span><span class="stt"> -&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></div><div class="description"></div><div class="examples"></div></div><p>Returns a new table with the same columns as this table, but with all rows
+removed.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>check:
+  t1 = table: city, pop
+    row: "Houston", 2400000
+    row: "NYC", 8400000
+  end
+  t1.empty() is table: city, pop end
+end</p></pre></pre></div></p></div><p><a name="(idx._(gentag._182))"></a></p><div class="function"><div class="boxed pyret-header"><dl class="multiline-args"><dt class=""><a name="(part._tables_.Table_table_drop)" class="pyret-code"></a><span class="stt">.drop</span> :: (</dt><dt class="indent-arg"><span class="stt">colname</span><span class="stt"> :: </span><a href="_global_.html#%28part._~3cglobal~3e_.String%29" data-pltdoc="x"><span class="stt">String</span></a></dt><dd class=""></dd><dt class=""><span class="stt">)</span></dt><dt class=""><span class="stt">-&gt; </span><a href="#%28part._tables_.Table%29" data-pltdoc="x"><span class="stt">Table</span></a></dt></dl></div><div class="description"></div><div class="examples"></div></div><p>Returns a new table that contains all the data from this table except the
+specified column.</p><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>check:
+  t1 = table: city, pop
+    row: "Houston", 2400000
+    row: "NYC", 8400000
+  end
+  t1.drop("city") is table: pop
+    row: 2400000
+    row: 8400000
+  end
+  t1.drop("pop") is table: city
+    row: "Houston"
+    row: "NYC"
+  end
+end</p></pre></pre></div></p></div><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="raw-arrays.html" title="backward to &quot;3.5 RawArray&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="Builtins_and_Libraries.html" title="up to &quot;3 Builtins and Libraries&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="lists.html" title="forward to &quot;3.7 lists&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>

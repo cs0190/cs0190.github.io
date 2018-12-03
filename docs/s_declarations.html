@@ -1,0 +1,225 @@
+<!doctype HTML>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="codemirror.js"></script>
+<script src="runmode.js"></script>
+<script src="pyret.js"></script>
+<script src="hilite.js"></script>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=0.8"/><title>2.1.8&nbsp;Declarations</title><link rel="stylesheet" type="text/css" href="scribble.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-style.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-racket.css" title="default"/><link rel="stylesheet" type="text/css" href="manual-fonts.css" title="default"/><link rel="stylesheet" type="text/css" href="codemirror.css" title="default"/><link rel="stylesheet" type="text/css" href="pyret.css" title="default"/><link rel="stylesheet" type="text/css" href="styles.css" title="default"/><script type="text/javascript" src="scribble-common.js"></script><script type="text/javascript" src="manual-racket.js"></script><!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]--></head><body id="scribble-racket-lang-org"><div class="tocset"><div class="tocview"><div class="tocviewlist tocviewlisttopspace"><div class="tocviewtitle"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_0&quot;);">&#9658;</a></td><td></td><td><a href="index.html" class="tocviewlink" data-pltdoc="x">Pyret</a></td></tr></table></div><div class="tocviewsublisttop" style="display: none;" id="tocview_0"><table cellspacing="0" cellpadding="0"><tr><td align="right">1&nbsp;</td><td><a href="Getting_Started.html" class="tocviewlink" data-pltdoc="x">Getting Started</a></td></tr><tr><td align="right">2&nbsp;</td><td><a href="Language_Concepts.html" class="tocviewselflink" data-pltdoc="x">Language Concepts</a></td></tr><tr><td align="right">3&nbsp;</td><td><a href="Builtins_and_Libraries.html" class="tocviewlink" data-pltdoc="x">Builtins and Libraries</a></td></tr><tr><td align="right">4&nbsp;</td><td><a href="Pyret_Style_Guide.html" class="tocviewlink" data-pltdoc="x">Pyret Style Guide</a></td></tr><tr><td align="right">5&nbsp;</td><td><a href="Internals.html" class="tocviewlink" data-pltdoc="x">Internals</a></td></tr><tr><td align="right">6&nbsp;</td><td><a href="Glossary.html" class="tocviewlink" data-pltdoc="x">Glossary</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_1&quot;);">&#9658;</a></td><td>2&nbsp;</td><td><a href="Language_Concepts.html" class="tocviewlink" data-pltdoc="x">Language Concepts</a></td></tr></table><div class="tocviewsublist" style="display: none;" id="tocview_1"><table cellspacing="0" cellpadding="0"><tr><td align="right">2.1&nbsp;</td><td><a href="s_forms.html" class="tocviewselflink" data-pltdoc="x">Language Constructs</a></td></tr><tr><td align="right">2.2&nbsp;</td><td><a href="testing.html" class="tocviewlink" data-pltdoc="x">Testing</a></td></tr><tr><td align="right">2.3&nbsp;</td><td><a href="equality.html" class="tocviewlink" data-pltdoc="x">equality</a></td></tr><tr><td align="right">2.4&nbsp;</td><td><a href="op-precedence.html" class="tocviewlink" data-pltdoc="x">Operator Precedence</a></td></tr><tr><td align="right">2.5&nbsp;</td><td><a href="brands.html" class="tocviewlink" data-pltdoc="x">Brands</a></td></tr><tr><td align="right">2.6&nbsp;</td><td><a href="type-check.html" class="tocviewlink" data-pltdoc="x">Type Checking</a></td></tr><tr><td align="right">2.7&nbsp;</td><td><a href="s_spies.html" class="tocviewlink" data-pltdoc="x">Spies</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_2&quot;);">&#9660;</a></td><td>2.1&nbsp;</td><td><a href="s_forms.html" class="tocviewlink" data-pltdoc="x">Language Constructs</a></td></tr></table><div class="tocviewsublist" style="display: block;" id="tocview_2"><table cellspacing="0" cellpadding="0"><tr><td align="right">2.1.1&nbsp;</td><td><a href="s_literals.html" class="tocviewlink" data-pltdoc="x">Primitives and Literals</a></td></tr><tr><td align="right">2.1.2&nbsp;</td><td><a href="s_comments.html" class="tocviewlink" data-pltdoc="x">Comments</a></td></tr><tr><td align="right">2.1.3&nbsp;</td><td><a href="s_program.html" class="tocviewlink" data-pltdoc="x">Programs</a></td></tr><tr><td align="right">2.1.4&nbsp;</td><td><a href="Import_Statements.html" class="tocviewlink" data-pltdoc="x">Import Statements</a></td></tr><tr><td align="right">2.1.5&nbsp;</td><td><a href="Provide_Statements.html" class="tocviewlink" data-pltdoc="x">Provide Statements</a></td></tr><tr><td align="right">2.1.6&nbsp;</td><td><a href="Bindings.html" class="tocviewlink" data-pltdoc="x">Bindings</a></td></tr><tr><td align="right">2.1.7&nbsp;</td><td><a href="Blocks.html" class="tocviewlink" data-pltdoc="x">Blocks</a></td></tr><tr><td align="right">2.1.8&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Declarations</a></td></tr><tr><td align="right">2.1.9&nbsp;</td><td><a href="s_contracts.html" class="tocviewlink" data-pltdoc="x">Contracts</a></td></tr><tr><td align="right">2.1.10&nbsp;</td><td><a href="Statements.html" class="tocviewlink" data-pltdoc="x">Statements</a></td></tr><tr><td align="right">2.1.11&nbsp;</td><td><a href="Expressions.html" class="tocviewlink" data-pltdoc="x">Expressions</a></td></tr><tr><td align="right">2.1.12&nbsp;</td><td><a href="s_annotations.html" class="tocviewlink" data-pltdoc="x">Annotations</a></td></tr></table></div></div><div class="tocviewlist"><table cellspacing="0" cellpadding="0"><tr><td style="width: 1em;"><a href="javascript:void(0);" title="Expand/Collapse" class="tocviewtoggle" onclick="TocviewToggle(this,&quot;tocview_3&quot;);">&#9658;</a></td><td>2.1.8&nbsp;</td><td><a href="" class="tocviewselflink" data-pltdoc="x">Declarations</a></td></tr></table><div class="tocviewsublistbottom" style="display: none;" id="tocview_3"><table cellspacing="0" cellpadding="0"><tr><td align="right">2.1.8.1&nbsp;</td><td><a href="#%28part._s~3alet-decl%29" class="tocviewlink" data-pltdoc="x">Let Declarations</a></td></tr><tr><td align="right">2.1.8.2&nbsp;</td><td><a href="#%28part._s~3arec-decl%29" class="tocviewlink" data-pltdoc="x">Recursive Let Declarations</a></td></tr><tr><td align="right">2.1.8.3&nbsp;</td><td><a href="#%28part._s~3afun-decl%29" class="tocviewlink" data-pltdoc="x">Function Declaration Expressions</a></td></tr><tr><td align="right">2.1.8.4&nbsp;</td><td><a href="#%28part._s~3adata-decl%29" class="tocviewlink" data-pltdoc="x">Data Declarations</a></td></tr><tr><td align="right">2.1.8.5&nbsp;</td><td><a href="#%28part._s~3avar-decl%29" class="tocviewlink" data-pltdoc="x">Variable Declarations</a></td></tr><tr><td align="right">2.1.8.6&nbsp;</td><td><a href="#%28part._s~3atype-decl%29" class="tocviewlink" data-pltdoc="x">Type Declarations</a></td></tr><tr><td align="right">2.1.8.7&nbsp;</td><td><a href="#%28part._s~3anewtype-decl%29" class="tocviewlink" data-pltdoc="x">Newtype Declarations</a></td></tr></table></div></div></div><div class="tocsub"><div class="tocsubtitle">On this page:</div><table class="tocsublist" cellspacing="0"><tr><td><span class="tocsublinknumber">2.1.8.1<tt>&nbsp;</tt></span><a href="#%28part._s~3alet-decl%29" class="tocsubseclink" data-pltdoc="x">Let Declarations</a></td></tr><tr><td><span class="tocsublinknumber">2.1.8.2<tt>&nbsp;</tt></span><a href="#%28part._s~3arec-decl%29" class="tocsubseclink" data-pltdoc="x">Recursive Let Declarations</a></td></tr><tr><td><span class="tocsublinknumber">2.1.8.3<tt>&nbsp;</tt></span><a href="#%28part._s~3afun-decl%29" class="tocsubseclink" data-pltdoc="x">Function Declaration Expressions</a></td></tr><tr><td><span class="tocsublinknumber">2.1.8.3.1<tt>&nbsp;</tt></span><a href="#%28part._.Scope%29" class="tocsubseclink" data-pltdoc="x">Scope</a></td></tr><tr><td><span class="tocsublinknumber">2.1.8.3.2<tt>&nbsp;</tt></span><a href="#%28part._.Where_blocks%29" class="tocsubseclink" data-pltdoc="x">Where blocks</a></td></tr><tr><td><span class="tocsublinknumber">2.1.8.3.3<tt>&nbsp;</tt></span><a href="#%28part._.Syntactic_sugar%29" class="tocsubseclink" data-pltdoc="x">Syntactic sugar</a></td></tr><tr><td><span class="tocsublinknumber">2.1.8.4<tt>&nbsp;</tt></span><a href="#%28part._s~3adata-decl%29" class="tocsubseclink" data-pltdoc="x">Data Declarations</a></td></tr><tr><td><span class="tocsublinknumber">2.1.8.5<tt>&nbsp;</tt></span><a href="#%28part._s~3avar-decl%29" class="tocsubseclink" data-pltdoc="x">Variable Declarations</a></td></tr><tr><td><span class="tocsublinknumber">2.1.8.6<tt>&nbsp;</tt></span><a href="#%28part._s~3atype-decl%29" class="tocsubseclink" data-pltdoc="x">Type Declarations</a></td></tr><tr><td><span class="tocsublinknumber">2.1.8.7<tt>&nbsp;</tt></span><a href="#%28part._s~3anewtype-decl%29" class="tocsubseclink" data-pltdoc="x">Newtype Declarations</a></td></tr></table></div></div><div class="maincolumn"><div class="main"><div class="navsettop"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="Blocks.html" title="backward to &quot;2.1.7 Blocks&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="s_forms.html" title="up to &quot;2.1 Language Constructs&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="s_contracts.html" title="forward to &quot;2.1.9 Contracts&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h5>2.1.8<tt>&nbsp;</tt><a name="(part._s~3adeclarations)"></a>Declarations</h5><p>There are a number of forms that can only appear as statements in <span class="stt">block</span>s
+(rather than anywhere an expression can appear).  Several of these are
+<span style="font-style: italic">declarations</span>, which define new names within their enclosing block.
+<a href="#%28elem._%28bnf-prod._%28.Pyret._data-decl%29%29%29" data-pltdoc="x">&#8249;data-decl&#8250;</a> and <a href="s_contracts.html#%28elem._%28bnf-prod._%28.Pyret._contract%29%29%29" data-pltdoc="x">&#8249;contract&#8250;</a> are exceptions, and can appear only at the top level.</p><blockquote class="SCodeFlow" style="white-space: pre;"><p><a name="(elem._(bnf-prod._(.Pyret._stmt)))"></a><span class="bnf-rule">&#8249;stmt&#8250;</span><span class="bnf-meta">:</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._let-decl%29%29%29" data-pltdoc="x">&#8249;let-decl&#8250;</a><span class="bnf-meta"> | </span><a href="#%28elem._%28bnf-prod._%28.Pyret._rec-decl%29%29%29" data-pltdoc="x">&#8249;rec-decl&#8250;</a><span class="bnf-meta"> | </span><a href="#%28elem._%28bnf-prod._%28.Pyret._fun-decl%29%29%29" data-pltdoc="x">&#8249;fun-decl&#8250;</a><span class="bnf-meta"> | </span><a href="#%28elem._%28bnf-prod._%28.Pyret._var-decl%29%29%29" data-pltdoc="x">&#8249;var-decl&#8250;</a><span class="bnf-meta"> | </span><a href="#%28elem._%28bnf-prod._%28.Pyret._type-stmt%29%29%29" data-pltdoc="x">&#8249;type-stmt&#8250;</a><span class="bnf-meta"> | </span><a href="#%28elem._%28bnf-prod._%28.Pyret._newtype-stmt%29%29%29" data-pltdoc="x">&#8249;newtype-stmt&#8250;</a>
+<span data-prod="‹stmt›" class="bnf-phantom"></span><span class="bnf-meta">| </span><a href="#%28elem._%28bnf-prod._%28.Pyret._data-decl%29%29%29" data-pltdoc="x">&#8249;data-decl&#8250;</a><span class="bnf-meta"> | </span><a href="s_contracts.html#%28elem._%28bnf-prod._%28.Pyret._contract%29%29%29" data-pltdoc="x">&#8249;contract&#8250;</a></p></blockquote><h5>2.1.8.1<tt>&nbsp;</tt><a name="(part._s~3alet-decl)"></a>Let Declarations</h5><p>Let declarations are written with an equals sign:</p><blockquote class="SCodeFlow" style="white-space: pre;"><p><a name="(elem._(bnf-prod._(.Pyret._let-decl)))"></a><span class="bnf-rule">&#8249;let-decl&#8250;</span><span class="bnf-meta">:</span> <a href="Bindings.html#%28elem._%28bnf-prod._%28.Pyret._binding%29%29%29" data-pltdoc="x">&#8249;binding&#8250;</a> <span class="bnf-lit">=</span> <a href="Expressions.html#%28elem._%28bnf-prod._%28.Pyret._binop-expr%29%29%29" data-pltdoc="x">&#8249;binop-expr&#8250;</a></p></blockquote><p>A let statement causes the name in the <span class="stt">binding</span> to be put in scope in the
+current block, and upon evaluation sets the value to be the result of
+evaluating the <span class="stt">binop-expr</span>.  The resulting binding cannot be changed via an
+<a href="Statements.html#%28elem._%28bnf-prod._%28.Pyret._assign-stmt%29%29%29" data-pltdoc="x">&#8249;assign-stmt&#8250;</a>, and cannot be shadowed by other bindings within the same or
+nested scopes:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>x = 5
+x := 10
+# Error: x is not assignable
+</p></pre></pre><pre class="pyret-block"><pre class="pyret-highlight"><p>x = 5
+x = 10
+# Error: x defined twice
+</p></pre></pre><pre class="pyret-block"><pre class="pyret-highlight"><p>x = 5
+fun f():
+  x = 10
+  x
+end
+# Error: can't use the name x in two nested scopes
+</p></pre></pre><pre class="pyret-block"><pre class="pyret-highlight"><p>fun f():
+  x = 10
+  x
+end
+fun g():
+  x = 22
+  x
+end
+# Not an error: x is used in two scopes that are not nested</p></pre></pre><p>A binding also has a case with tuples, where several names can be given in a binding which can then be assigned to values in a tuple.</p><pre class="pyret-block"><pre class="pyret-highlight"><p>{x;y;z} = {"he" + "llo"; true; 42}
+x = "hi"
+#Error: x defined twice
+</p></pre></pre><pre class="pyret-block"><pre class="pyret-highlight"><p>{x;y;z} = {10; 12}
+#Error: The number of names must match the length of the tuple
+</p></pre></pre><h5>2.1.8.2<tt>&nbsp;</tt><a name="(part._s~3arec-decl)"></a>Recursive Let Declarations</h5><blockquote class="SCodeFlow" style="white-space: pre;"><p><a name="(elem._(bnf-prod._(.Pyret._rec-decl)))"></a><span class="bnf-rule">&#8249;rec-decl&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit">rec</span> <a href="Bindings.html#%28elem._%28bnf-prod._%28.Pyret._binding%29%29%29" data-pltdoc="x">&#8249;binding&#8250;</a> <span class="bnf-lit">=</span> <a href="Expressions.html#%28elem._%28bnf-prod._%28.Pyret._binop-expr%29%29%29" data-pltdoc="x">&#8249;binop-expr&#8250;</a></p></blockquote><p>A recursive let-binding is just like a normal let-binding, except that the name
+being defined is in scope in the definition itself, rather than only after it.
+That is:</p><p><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight bad-ex"><p>countdown-bad = lam(n):
+  if n == 0: true
+  else: countdown-bad(n - 1) # countdown-bad is not in scope
+  end
+end
+# countdown-bad is in scope here</p></pre></pre></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight good-ex"><p>rec countdown-good =
+  # countdown-good is in scope here, because of the 'rec'
+  lam(n):
+    if n == 0: true
+    else: countdown-good(n - 1) # so this call is fine
+    end
+  end
+# countdown-good is in scope here</p></pre></pre></div></p><h5>2.1.8.3<tt>&nbsp;</tt><a name="(part._s~3afun-decl)"></a>Function Declaration Expressions</h5><p>Function declarations have a number of pieces:</p><blockquote class="SCodeFlow" style="white-space: pre;"><p><a name="(elem._(bnf-prod._(.Pyret._fun-decl)))"></a><span class="bnf-rule">&#8249;fun-decl&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit">fun</span> <span class="bnf-lit bnf-unknown">NAME</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._fun-header%29%29%29" data-pltdoc="x">&#8249;fun-header&#8250;</a> <span class="bnf-meta">[</span><span class="bnf-lit">block</span><span class="bnf-meta">]</span> <span class="bnf-lit">:</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._doc-string%29%29%29" data-pltdoc="x">&#8249;doc-string&#8250;</a> <a href="Blocks.html#%28elem._%28bnf-prod._%28.Pyret._block%29%29%29" data-pltdoc="x">&#8249;block&#8250;</a> <a href="#%28elem._%28bnf-prod._%28.Pyret._where-clause%29%29%29" data-pltdoc="x">&#8249;where-clause&#8250;</a> <span class="bnf-lit">end</span>
+<a name="(elem._(bnf-prod._(.Pyret._fun-header)))"></a><span class="bnf-rule">&#8249;fun-header&#8250;</span><span class="bnf-meta">:</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._ty-params%29%29%29" data-pltdoc="x">&#8249;ty-params&#8250;</a> <a href="#%28elem._%28bnf-prod._%28.Pyret._args%29%29%29" data-pltdoc="x">&#8249;args&#8250;</a> <a href="#%28elem._%28bnf-prod._%28.Pyret._return-ann%29%29%29" data-pltdoc="x">&#8249;return-ann&#8250;</a>
+<a name="(elem._(bnf-prod._(.Pyret._ty-params)))"></a><span class="bnf-rule">&#8249;ty-params&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-meta">[</span><span class="bnf-lit">&lt;</span> <span class="bnf-meta">(</span><a href="#%28elem._%28bnf-prod._%28.Pyret._list-ty-param%29%29%29" data-pltdoc="x">&#8249;list-ty-param&#8250;</a><span class="bnf-meta">)</span><span class="bnf-meta">*</span> <span class="bnf-lit bnf-unknown">NAME</span> <span class="bnf-lit">&gt;</span><span class="bnf-meta">]</span>
+<a name="(elem._(bnf-prod._(.Pyret._list-ty-param)))"></a><span class="bnf-rule">&#8249;list-ty-param&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit bnf-unknown">NAME</span> <span class="bnf-lit">,</span>
+<a name="(elem._(bnf-prod._(.Pyret._args)))"></a><span class="bnf-rule">&#8249;args&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit">(</span> <span class="bnf-meta">[</span><span class="bnf-meta">(</span><a href="#%28elem._%28bnf-prod._%28.Pyret._list-arg-elt%29%29%29" data-pltdoc="x">&#8249;list-arg-elt&#8250;</a><span class="bnf-meta">)</span><span class="bnf-meta">*</span> <a href="Bindings.html#%28elem._%28bnf-prod._%28.Pyret._binding%29%29%29" data-pltdoc="x">&#8249;binding&#8250;</a><span class="bnf-meta">]</span> <span class="bnf-lit bnf-unknown">RPAREN</span>
+<a name="(elem._(bnf-prod._(.Pyret._list-arg-elt)))"></a><span class="bnf-rule">&#8249;list-arg-elt&#8250;</span><span class="bnf-meta">:</span> <a href="Bindings.html#%28elem._%28bnf-prod._%28.Pyret._binding%29%29%29" data-pltdoc="x">&#8249;binding&#8250;</a> <span class="bnf-lit">,</span>
+<a name="(elem._(bnf-prod._(.Pyret._return-ann)))"></a><span class="bnf-rule">&#8249;return-ann&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-meta">[</span><span class="bnf-lit">-&gt;</span> <a href="s_annotations.html#%28elem._%28bnf-prod._%28.Pyret._ann%29%29%29" data-pltdoc="x">&#8249;ann&#8250;</a><span class="bnf-meta">]</span>
+<a name="(elem._(bnf-prod._(.Pyret._doc-string)))"></a><span class="bnf-rule">&#8249;doc-string&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-meta">[</span><span class="bnf-lit">doc:</span> <span class="bnf-lit bnf-unknown">STRING</span><span class="bnf-meta">]</span>
+<a name="(elem._(bnf-prod._(.Pyret._where-clause)))"></a><span class="bnf-rule">&#8249;where-clause&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-meta">[</span><span class="bnf-lit">where:</span> <a href="Blocks.html#%28elem._%28bnf-prod._%28.Pyret._block%29%29%29" data-pltdoc="x">&#8249;block&#8250;</a><span class="bnf-meta">]</span></p></blockquote><p>Function declarations are statements used to define functions with a given
+name, parameters and signature, optional documentation, body, and optional tests.
+For example, the following code:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>fun is-even(n):
+  num-modulo(n, 2) == 0
+end</p></pre></pre><p>defines a minimal function, with just its name, parameter names, and body.  A
+more complete example:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>fun fact(n :: NumNonNegative) -&gt; Number:
+  doc: "Returns n! = 1 * 2 * 3 ... * n"
+  if n == 0: 1
+  else:      n * fact(n - 1)
+  end
+where:
+  fact(1) is 1
+  fact(5) is 120
+end</p></pre></pre><p>defines a recursive function with a fully-annotated signature (the types of its
+parameter and return value are specified), documents the purpose of the
+function with a doc-string, and includes a where-block definine some simple
+tests of the function.</p><p>Function declarations are statements that can only appear either at the top
+level of a file, or within a block scope.  (This is commonly used for defining
+local helper functions within another one.)</p><h5>2.1.8.3.1<tt>&nbsp;</tt><a name="(part._.Scope)"></a>Scope</h5><p>Once defined, the name of the function is visible for the remainder of the
+scope in which it is defined.  Additionall, the function is in scope within its
+own body, to enable recursive functions like <span class="pyret-highlight"><span class="stt">fact</span></span> above:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>fun outer-function(a, b, c):
+  ...
+  # outer-function is in scope here
+  # as are parameters a, b, and c
+  ...
+  fun inner-helper(d, e, f):
+    ...
+    # inner-helper is in scope here,
+    # as are parameters d, e, and f
+    # and also outer-helper, a, b and c
+    ...
+  end
+  ...
+  # outer-function, a, b, and c are in scope here,
+  # and so is inner-helper, but *not* d, e or f
+  ...
+end</p></pre></pre><p>As with all Pyret identifiers, these function and parameter names cannot be
+mutated, and they cannot be redefined while in scope unless they are explicitly
+<span class="pyret-highlight"><span class="stt">shadow</span></span>ed.</p><h5>2.1.8.3.2<tt>&nbsp;</tt><a name="(part._.Where_blocks)"></a>Where blocks</h5><p>If a function defines a <span class="pyret-highlight"><span class="stt">where:</span></span> block, it can incorporate unit tests
+directly inline with its definition.  This helps to document the code in
+terms of executable examples.  Additionally, whenever the function declaration
+is executed, the tests will be executed as well.  This helps ensure that the
+code and tests don&rsquo;t fall out of synch with each other.  (The clarification
+about "whenever the declaration is executed" allows writing tests for nested
+functions that might rely on the parameters of their containing function: in
+the example above, <span class="pyret-highlight"><span class="stt">inner-helper</span></span> might have a test case that relied on
+the parameters <span class="pyret-highlight"><span class="stt">a</span></span>, <span class="pyret-highlight"><span class="stt">b</span></span> or <span class="pyret-highlight"><span class="stt">c</span></span> from the surrounding call to
+<span class="pyret-highlight"><span class="stt">outer-function</span></span>.) See the documentation for
+<a href="testing.html#%28part._testing-blocks%29" data-pltdoc="x"><span class="pyret-highlight"><span class="stt">check:</span></span> and <span class="pyret-highlight"><span class="stt">where:</span></span> blocks</a> for more
+details.</p><h5>2.1.8.3.3<tt>&nbsp;</tt><a name="(part._.Syntactic_sugar)"></a>Syntactic sugar</h5><p><div class="SIntrapara">Function declarations are not a primitive concept in the language.  Instead,
+they can be thought of as an idiomatic declaration of a recursively-scoped let
+binding to a lambda expression.  That is, the following two definitions are
+equivalent:
+</div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>fun fact(n):
+  if n == 1: 1 else: n * fact(n - 1) end
+end</p></pre></pre></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>rec fact = lam(n):
+  if n == 1: 1 else n * fact(n - 1) end
+end</p></pre></pre></div></p><p>See the <a href="Expressions.html#%28part._s~3alam-expr%29" data-pltdoc="x">documentation</a> for more information about
+<a href="Expressions.html#%28elem._%28bnf-prod._%28.Pyret._lam-expr%29%29%29" data-pltdoc="x">&#8249;lam-expr&#8250;</a>s, and also see <a href="#%28elem._%28bnf-prod._%28.Pyret._rec-decl%29%29%29" data-pltdoc="x">&#8249;rec-decl&#8250;</a>s above for more
+information about recursive bindings.</p><h5>2.1.8.4<tt>&nbsp;</tt><a name="(part._s~3adata-decl)"></a>Data Declarations</h5><p>Data declarations define a number of related functions for creating and
+manipulating a data type.  Their grammar is:</p><blockquote class="SCodeFlow" style="white-space: pre;"><p><a name="(elem._(bnf-prod._(.Pyret._data-decl)))"></a><span class="bnf-rule">&#8249;data-decl&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit">data</span> <span class="bnf-lit bnf-unknown">NAME</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._ty-params%29%29%29" data-pltdoc="x">&#8249;ty-params&#8250;</a> <span class="bnf-lit">:</span> <span class="bnf-meta">(</span><a href="#%28elem._%28bnf-prod._%28.Pyret._data-variant%29%29%29" data-pltdoc="x">&#8249;data-variant&#8250;</a><span class="bnf-meta">)</span><span class="bnf-meta">*</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._data-sharing%29%29%29" data-pltdoc="x">&#8249;data-sharing&#8250;</a> <a href="#%28elem._%28bnf-prod._%28.Pyret._where-clause%29%29%29" data-pltdoc="x">&#8249;where-clause&#8250;</a> <span class="bnf-lit">end</span>
+<a name="(elem._(bnf-prod._(.Pyret._data-variant)))"></a><span class="bnf-rule">&#8249;data-variant&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit">|</span> <span class="bnf-lit bnf-unknown">NAME</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._variant-members%29%29%29" data-pltdoc="x">&#8249;variant-members&#8250;</a> <a href="#%28elem._%28bnf-prod._%28.Pyret._data-with%29%29%29" data-pltdoc="x">&#8249;data-with&#8250;</a><span class="bnf-meta"> | </span><span class="bnf-lit">|</span> <span class="bnf-lit bnf-unknown">NAME</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._data-with%29%29%29" data-pltdoc="x">&#8249;data-with&#8250;</a>
+<a name="(elem._(bnf-prod._(.Pyret._variant-members)))"></a><span class="bnf-rule">&#8249;variant-members&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit">(</span> <span class="bnf-meta">[</span><span class="bnf-meta">(</span><a href="#%28elem._%28bnf-prod._%28.Pyret._list-variant-member%29%29%29" data-pltdoc="x">&#8249;list-variant-member&#8250;</a><span class="bnf-meta">)</span><span class="bnf-meta">*</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._variant-member%29%29%29" data-pltdoc="x">&#8249;variant-member&#8250;</a><span class="bnf-meta">]</span> <span class="bnf-lit">)</span>
+<a name="(elem._(bnf-prod._(.Pyret._list-variant-member)))"></a><span class="bnf-rule">&#8249;list-variant-member&#8250;</span><span class="bnf-meta">:</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._variant-member%29%29%29" data-pltdoc="x">&#8249;variant-member&#8250;</a> <span class="bnf-lit">,</span>
+<a name="(elem._(bnf-prod._(.Pyret._variant-member)))"></a><span class="bnf-rule">&#8249;variant-member&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-meta">[</span><span class="bnf-lit">ref</span><span class="bnf-meta">]</span> <a href="Bindings.html#%28elem._%28bnf-prod._%28.Pyret._binding%29%29%29" data-pltdoc="x">&#8249;binding&#8250;</a>
+<a name="(elem._(bnf-prod._(.Pyret._data-with)))"></a><span class="bnf-rule">&#8249;data-with&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-meta">[</span><span class="bnf-lit">with:</span> <a href="Expressions.html#%28elem._%28bnf-prod._%28.Pyret._fields%29%29%29" data-pltdoc="x">&#8249;fields&#8250;</a><span class="bnf-meta">]</span>
+<a name="(elem._(bnf-prod._(.Pyret._data-sharing)))"></a><span class="bnf-rule">&#8249;data-sharing&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-meta">[</span><span class="bnf-lit">sharing:</span> <a href="Expressions.html#%28elem._%28bnf-prod._%28.Pyret._fields%29%29%29" data-pltdoc="x">&#8249;fields&#8250;</a><span class="bnf-meta">]</span></p></blockquote><p>A <a href="#%28elem._%28bnf-prod._%28.Pyret._data-decl%29%29%29" data-pltdoc="x">&#8249;data-decl&#8250;</a> causes a number of new names to be bound in the scope of the
+block it is defined in:</p><ul><li><p>The <span class="stt">NAME</span> of the data definition</p></li><li><p><span class="stt">NAME</span>, for each variant of the data definition</p></li><li><p><span class="stt">is-NAME</span>, for the data definition and each variant of
+the data definition</p></li></ul><p>For example, in this data definition:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>data BTree:
+  | node(value :: Number, left :: BTree, right :: BTree)
+  | leaf(value :: Number)
+end</p></pre></pre><p>These names are defined, with the given types:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>is-BTree :: (Any -&gt; Bool)
+node :: (Number, BTree, BTree -&gt; BTree)
+is-node :: (Any -&gt; Bool)
+leaf :: (Number -&gt; BTree)
+is-leaf :: (Any -&gt; Bool)</p></pre></pre><p>We call <span class="stt">node</span> and <span class="stt">leaf</span> the <span style="font-style: italic">constructors</span> of <span class="stt">BTree</span>, and they
+construct values with the named fields.  They will refuse to create the value
+if fields that don&rsquo;t match the annotations are given.  As with all annotations,
+they are optional.  The constructed values can have their fields accessed with
+<a href="Expressions.html#%28part._s~3adot-expr%29" data-pltdoc="x">dot expressions</a>.</p><p>The function <span class="stt">is-BTree</span> is a <span style="font-style: italic">detector</span> for values created from this data
+definition.  <span class="stt">is-BTree</span> returns <span class="pyret-highlight"><span class="stt">true</span></span> when provided values
+created by <span class="stt">node</span> or <span class="stt">leaf</span>, but no others.  <span class="stt">BTree</span> can be
+used as an annotation to check for values created by the constructors of
+<span class="stt">BTree</span>.</p><p>The functions <span class="stt">is-node</span> and <span class="stt">is-leaf</span> are detectors for the values
+created by the individual constructors: <span class="stt">is-node</span> will only return <span class="pyret-highlight"><span class="stt">true</span></span>
+for values created by calling <span class="stt">node</span>, and <span class="stt">is-leaf</span> correspondingly for
+<span class="stt">leaf</span>.</p><p>Here is a longer example of the behavior of detectors, field access, and
+constructors:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>data BTree:
+  | node(value :: Number, left :: BTree, right :: BTree)
+  | leaf(value :: Number)
+where:
+  a-btree = node(1, leaf(2), node(3, leaf(4), leaf(5)))
+
+  is-BTree(a-btree) is true
+  is-BTree("not-a-tree") is false
+  is-BTree(leaf(5)) is true
+  is-leaf(leaf(5)) is true
+  is-leaf(a-btree) is false
+  is-leaf("not-a-tree") is false
+  is-node(leaf(5)) is false
+  is-node(a-btree) is true
+  is-node("not-a-tree") is false
+
+  a-btree.value is 1
+  a-btree.left.value is 2
+  a-btree.right.value is 3
+  a-btree.right.left.value is 4
+  a-btree.right.right.value is 5
+
+end</p></pre></pre><p>A data definition can also define, for each instance as well as for the data
+definition as a whole, a set of methods.  This is done with the keywords
+<span class="stt">with:</span> and <span class="stt">sharing:</span>.  Methods defined on a variant via <span class="stt">with:</span> will
+only be defined for instances of that variant, while methods defined on the
+union of all the variants with <span class="stt">sharing:</span> are defined on all instances.  For
+example:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>data BTree:
+  | node(value :: Number, left :: BTree, right :: BTree) with:
+    method size(self): 1 + self.left.size() + self.right.size() end
+  | leaf(value :: Number) with:
+    method size(self): 1 end,
+    method increment(self): leaf(self.value + 1) end
+sharing:
+  method values-equal(self, other):
+    self.value == other.value
+  end
+where:
+  a-btree = node(1, leaf(2), node(3, leaf(4), leaf(2)))
+  a-btree.values-equal(leaf(1)) is true
+  leaf(1).values-equal(a-btree) is true
+  a-btree.size() is 5
+  leaf(0).size() is 1
+  leaf(1).increment() is leaf(2)
+  a-btree.increment() # raises error: field increment not found.
+end</p></pre></pre><p>When you have a single kind of datum in a data definition, instead of
+writing:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>data Point:
+  | pt(x, y)
+end</p></pre></pre><p>You can drop the | and simply write:</p><pre class="pyret-block"><pre class="pyret-highlight"><p>data Point: pt(x, y) end</p></pre></pre><h5>2.1.8.5<tt>&nbsp;</tt><a name="(part._s~3avar-decl)"></a>Variable Declarations</h5><p>Variable declarations look like <a href="#%28part._s~3alet-decl%29" data-pltdoc="x">let bindings</a>, but
+with an extra <span class="stt">var</span> keyword in the beginning:</p><blockquote class="SCodeFlow" style="white-space: pre;"><p><a name="(elem._(bnf-prod._(.Pyret._var-decl)))"></a><span class="bnf-rule">&#8249;var-decl&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit">var</span> <a href="Bindings.html#%28elem._%28bnf-prod._%28.Pyret._binding%29%29%29" data-pltdoc="x">&#8249;binding&#8250;</a> <span class="bnf-lit">=</span> <a href="Expressions.html#%28elem._%28bnf-prod._%28.Pyret._expr%29%29%29" data-pltdoc="x">&#8249;expr&#8250;</a></p></blockquote><p>A <span class="stt">var</span> expression creates a new <span style="font-style: italic">assignable variable</span> in the current
+scope, initialized to the value of the expression on the right of the <span class="stt">=</span>.
+It can be accessed simply by using the variable name, which will always
+evaluate to the last-assigned value of the variable.  <a href="Statements.html#%28part._s~3aassign-stmt%29" data-pltdoc="x">Assignment statements</a> can be used to update the value stored in an
+assignable variable.</p><p>If the <span class="stt">binding</span> contains an annotation, the initial value is checked
+against the annotation, and all <a href="Statements.html#%28part._s~3aassign-stmt%29" data-pltdoc="x">assignment
+statements</a> to the variable check the annotation on the new value before
+updating.</p><h5>2.1.8.6<tt>&nbsp;</tt><a name="(part._s~3atype-decl)"></a>Type Declarations</h5><p><div class="SIntrapara">Pyret provides two means of defining new type names.
+</div><div class="SIntrapara"><blockquote class="SCodeFlow" style="white-space: pre;"><p><a name="(elem._(bnf-prod._(.Pyret._type-stmt)))"></a><span class="bnf-rule">&#8249;type-stmt&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit">type</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._type-decl%29%29%29" data-pltdoc="x">&#8249;type-decl&#8250;</a>
+<a name="(elem._(bnf-prod._(.Pyret._type-decl)))"></a><span class="bnf-rule">&#8249;type-decl&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit bnf-unknown">NAME</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._ty-params%29%29%29" data-pltdoc="x">&#8249;ty-params&#8250;</a> <span class="bnf-lit">=</span> <a href="s_annotations.html#%28elem._%28bnf-prod._%28.Pyret._ann%29%29%29" data-pltdoc="x">&#8249;ann&#8250;</a></p></blockquote></div></p><p><div class="SIntrapara">A <a href="#%28elem._%28bnf-prod._%28.Pyret._type-stmt%29%29%29" data-pltdoc="x">&#8249;type-stmt&#8250;</a> declares an alias to an existing type.  This allows for
+creating convenient names for types, especially when type parameters are
+involved.
+</div><div class="SIntrapara"><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>type Predicate&lt;a&gt; = (a -&gt; Boolean)
+# Now we can use this alias to make the signatures for other functions more readable:
+fun filter&lt;a&gt;(pred :: Predicate&lt;a&gt;, elts :: List&lt;a&gt;) -&gt; List&lt;a&gt;: ... end
+
+# We can specialize types, too:
+type NumList = List&lt;Number&gt;
+type StrPred = Predicate&lt;String&gt;</p></pre></pre></div></p></div></div></p><h5>2.1.8.7<tt>&nbsp;</tt><a name="(part._s~3anewtype-decl)"></a>Newtype Declarations</h5><p><div class="SIntrapara">By contrast, sometimes we need to declare brand-new types, that are not easily
+describable using <a href="#%28elem._%28bnf-prod._%28.Pyret._data-decl%29%29%29" data-pltdoc="x">&#8249;data-decl&#8250;</a> or other existing types.  (For one common
+example, we might want to build an object-oriented type that encapsulates
+details of its internals.)  To do that we need to specify both a <span style="font-style: italic">static name</span> to
+use as annotations to describe our data, and a <span style="font-style: italic">dynamic brand</span> to mark the
+data and ensure that we can recognize it again when we see it.
+</div><div class="SIntrapara"><blockquote class="SCodeFlow" style="white-space: pre;"><p><a name="(elem._(bnf-prod._(.Pyret._newtype-stmt)))"></a><span class="bnf-rule">&#8249;newtype-stmt&#8250;</span><span class="bnf-meta">:</span> <a href="#%28elem._%28bnf-prod._%28.Pyret._newtype-decl%29%29%29" data-pltdoc="x">&#8249;newtype-decl&#8250;</a>
+<a name="(elem._(bnf-prod._(.Pyret._newtype-decl)))"></a><span class="bnf-rule">&#8249;newtype-decl&#8250;</span><span class="bnf-meta">:</span> <span class="bnf-lit">newtype</span> <span class="bnf-lit bnf-unknown">NAME</span> <span class="bnf-lit">as</span> <span class="bnf-lit bnf-unknown">NAME</span></p></blockquote></div><div class="SIntrapara">When we write
+</div><div class="SIntrapara"><div class="examples"><p><div class="SIntrapara"><span style="font-weight: bold">Examples:</span></div><div class="SIntrapara"><pre class="pyret-block"><pre class="pyret-highlight"><p>newtype MytypeBrander as MyType</p></pre></pre></div></p></div></div><div class="SIntrapara">we define both of these components.  See <a href="brands.html" data-pltdoc="x">Brands</a> for more information
+about branders.</div></p><div class="navsetbottom"><span class="navleft"><div class="nosearchform"></div>&nbsp;&nbsp;</span><span class="navright">&nbsp;&nbsp;<a href="Blocks.html" title="backward to &quot;2.1.7 Blocks&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="s_forms.html" title="up to &quot;2.1 Language Constructs&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="s_contracts.html" title="forward to &quot;2.1.9 Contracts&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
